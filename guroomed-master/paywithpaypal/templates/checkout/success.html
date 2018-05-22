@@ -1,0 +1,65 @@
+{% extends "guroomed/base.html" %}
+
+{% block title %}Guroomed{% endblock %}
+
+{% load static %}
+
+
+{% block content %}
+<h2 class="center"><b>Order Complete</b></h2>
+
+<div class="col-md-6">
+    <div class="panel panel-default">
+            <div class="panel-heading center" style="font-weight:bold;">Order Details</div>
+            <div class="panel-body">
+        Tranasaction : {{status}}<br>
+        You have purchased <a href="/api/courses/show/{{course.id}}">{{course.title}}</a> course successfully
+        <br><table>
+        <tr>
+            <th>Order ID</th>
+            <th> :</th>
+            <td><a href="/api/paypal/orders">{{order_id}}</a></td>
+        </tr>
+        <tr>
+            <th>Payment ID</th>
+            <th> :</th>
+            <td><a href="/api/paypal/paypaldb">{{payment_id}}</a></td>
+        </tr>
+        </table>
+            </div>
+        </div>
+</div>
+
+
+<div class="col-md-6">
+    <div class="panel panel-default">
+        <div class="panel-heading center" style="font-weight:bold;">Total</div>
+        <div class="panel-body">
+            <br>
+                <img src="https://udemy-images.udemy.com/course/240x135/1151632_de9b.jpg">
+                <table>
+                    <tr>
+                        <th>Course ID</th>
+                        <th> :</th>
+                        <td>{{course_id}}</td>
+                    </tr>
+                    <tr>
+                        <th>Course Name</th>
+                        <th> :</th>
+                        <td>Artificial Intelligence A-Z™: Learn How To Build An AI</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <th> :</th>
+                        <td>Learn key AI concepts and intuition training to get you quickly up to speed with all things AI. Covering:</td>
+                    </tr>
+                    <tr>
+                        <th>Course Price</th>
+                        <th> :</th>
+                        <td>{{course_price}}</td>
+                    </tr>
+                </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

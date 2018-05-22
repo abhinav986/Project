@@ -1,0 +1,86 @@
+{% extends "guroomed/base.html" %}
+
+{% block title %}Guroomed{% endblock %}
+
+{% load static %}
+
+
+{% block content %}
+
+<h2 class="center"><b>Checkout page</b></h2>
+
+{% if status %}
+    <i>{{status}}</i>
+    <br><i>Try Again</i><br>
+    <br><br>
+{% endif %}
+
+
+<div class="col-md-6">
+    <div class="panel panel-default">
+            <div class="panel-heading center" style="font-weight:bold;">About Course</div>
+            <div class="panel-body">
+                <img src="https://udemy-images.udemy.com/course/240x135/1151632_de9b.jpg">
+                <table>
+                    <tr>
+                        <th>Course ID</th>
+                        <th> :</th>
+                        <td>{{course_id}}</td>
+                    </tr>
+                    <tr>
+                        <th>Course Name</th>
+                        <th> :</th>
+                        <td>Artificial Intelligence A-Z™: Learn How To Build An AI</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <th> :</th>
+                        <td>Learn key AI concepts and intuition training to get you quickly up to speed with all things AI. Covering:</td>
+                    </tr>
+                    <tr>
+                        <th>Course Price</th>
+                        <th> :</th>
+                        <td>{{course_price}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+</div>
+
+
+<div class="col-md-6">
+    <div class="panel panel-default">
+        <div class="panel-heading center" style="font-weight:bold;">Total</div>
+        <div class="panel-body">
+        Currency : {{currency}}<br>
+        <br><table>
+        <tr>
+            <th>Course Price</th>
+            <th> :</th>
+            <td>{{course_price}}</td>
+        </tr>
+        <tr>
+            <th>Tax Price</th>
+            <th> :</th>
+            <td>{{tax_price}}</td>
+        </tr>
+        <tr>
+            <th>Discount Price</th>
+            <th> :</th>
+            <td>{{discount_price}}</td>
+        </tr>
+        <hr>
+        <tr></tr>
+        <tr style="border-top: 1px solid #9c9a9a;">
+            <th>Total Price</th>
+            <th> :</th>
+            <td>{{total_price}}</td>
+        </tr>
+        </table>
+
+        <br><br>
+        <a href="/api/paypal/create{{params}}" class="btn btn-success btn-sm waves-effect waves-light"><i class="fa fa-paypal" aria-hidden="true"></i><b> Go to Paypal<b></a>
+        </div>
+    </div>
+</div>
+{% endblock %}

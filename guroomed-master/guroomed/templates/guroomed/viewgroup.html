@@ -1,0 +1,185 @@
+<!DOCTYPE>
+<html>
+<head>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+	{% load static %}
+<link href="{% static 'notes/mdb/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'notes/mdb/css/mdb.min.css' %}" rel="stylesheet">
+
+<link href="{% static 'notes/mdb/css/style.css' %}" rel="stylesheet">
+ <!-- SCRIPTS -->
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="{% static 'notes/extras/jquery.min.1.7.js' %}"></script>
+    <script type="text/javascript" src="{% static 'notes/extras/modernizr.2.5.3.min.js' %}"></script>
+
+   <style type="text/css">
+    body{
+        overflow:hidden;
+    }
+	.viewgroup-a {
+		display: block;
+	    width: 46%;
+	    margin: 1%;
+	    float: left;
+	    background: #ffbb33;
+	    padding: 4% 1%;
+	    text-align: center;
+	    font-size: 30px;
+		color: #fff;
+		text-transform: uppercase;
+	}
+   </style>
+</head>
+<body>
+<nav class="navbar navbar-fixed-top navbar-dark unique-color">
+<button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapseEx">
+            <i class="fa fa-bars" style="margin-bottom:5em;margin-top:-0.2em"></i></button>
+    <div class="container">
+         <div class="col-xs-12">
+     <div class="collapse navbar-toggleable-md" id="collapseEx"> 
+       
+        <a class="navbar-brand" href="http://zenrays.com/" target="_blank">ZenRays</a>
+     
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"></a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/notes">Notes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/videos/view">Videos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"></a>
+                </li>
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                {% endif %}
+            </ul>
+       </div>     
+        </div>
+    </div>
+</nav>
+<!--/.Navbar-->
+<div class="container" style="margin-top:7%;">
+		{% load embed_video_tags %}
+		{% load permission_tags %}
+		{% if user|has_role:'faculty,zen_student,superadmin' %}
+			{% if output %}
+				{% for items in output %}
+				<div>
+					<a class="viewgroup-a fa fa-book" href="/notes/{{items.id}}"> {{ items.name }}</a>
+				</div>
+				{% endfor %}
+			{% else %}
+				could not load
+			{% endif %}
+			
+		{% else %}
+		  	You don't have access to view this page. Please <a href="/login">login</a>
+		{% endif %}
+</div>
+
+
+
+
+<!--Footer-->
+<footer class="page-footer center-on-small-only">
+
+    <!--Footer Links-->
+    <div class="container-fluid">
+        <div class="row">
+
+            <!--First column-->
+            <div class="col-md-3 offset-md-1">
+                <h5 class="title">ZenRays Technologies</h5>
+                <p>Powered by IITians & Industry Experts</p>
+            </div>
+            <!--/.First column-->
+
+            <hr class="hidden-md-up">
+
+            <!--Second column-->
+            <div class="col-md-2 offset-md-1">
+                <h5 class="title">Quick Links</h5>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/notes">Notes</a></li>
+                    <li><a href="/videos/view">Videos</a></li>
+                </ul>
+            </div>
+            <!--/.Second column-->
+
+            <hr class="hidden-md-up">
+
+            <!--Third column-->
+            <div class="col-md-2">
+                <h5 class="title">Links</h5>
+                <ul>
+                    <li><a href="http://zenrays.com/angularjs-training">AngularJS</a></li>
+                    <li><a href="http://zenrays.com/java-j2ee-training">Complete Java</a></li>
+                    <li><a href="http://zenrays.com/testing-courses">Software Testing </a></li>
+                    <li><a href="http://zenrays.com/web-development-course">Modern Web Development</a></li>
+                </ul>
+            </div>
+            <!--/.Third column-->
+
+            <hr class="hidden-md-up">
+
+            <!--Fourth column-->
+            <div class="col-md-2">
+                <h5 class="title">Links</h5>
+                <ul>
+                    <li><a href="http://zenrays.com/course/pythondjango-training">Python & django</a></li>
+                    <li><a href="http://zenrays.com/ui-development-training-courses-bangalore">UI Development</a></li>
+                    <li><a href="http://zenrays.com/oops-javascript-training">JavaScript</a></li>
+                    <li><a href="http://zenrays.com/php-training">PHP & Laravel</a></li>
+                </ul>
+            </div>
+            <!--/.Fourth column-->
+
+        </div>
+    </div>
+    <!--/.Footer Links-->
+
+    <hr>
+
+    
+
+    
+    <!--Copyright-->
+    <div class="footer-copyright">
+        <div class="container-fluid">
+            © 2017 Copyright: <a href="http://zenrays.com"> zenrays.com </a>
+
+        </div>
+    </div>
+    <!--/.Copyright-->
+
+</footer>
+<!--/.Footer-->
+
+    <script type="text/javascript" src="{% static 'notes/mdb/js/jquery-3.1.1.min.js' %}"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{% static 'notes/mdb/js/tether.min.js' %}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{% static 'notes/mdb/js/bootstrap.min.js' %}"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{% static 'notes/mdb/js/mdb.min.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<div class="video-container">
+  <video class="video-fluid z-depth-1" autoplay loop>
+    <source src="" type="video/mp4" />
+  </video>
+</div>
+<div class="overlay">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-6">
+        <h1 class="h1-responsive white-text">Teach the world online</h1>
+        <h5 class="h5-responsive white-text">
+          Share your knowledge and reach millions of students across the globe.
+        </h5>
+        <button class="btn btn-danger waves-light" [routerLink]="['/instructor','register','instructor-signup']">Register </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Section: Best Features-->
+<section id="discover-potential" class="py-5 text-center">
+
+  <!-- Heading -->
+  <h2 class="h2-responsive">Discover your potential</h2>
+  <div class="container">
+    <!--Grid row-->
+    <div class="row hide-on-sm">
+
+      <!--Grid column-->
+      <div class="col-md-4 mb-5">
+        <i class="fa fa-camera-retro fa-4x orange-text"></i>
+        <h4 class="h4-responsive my-4">Earn extra income</h4>
+        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima assumenda deleniti
+          hic.
+        </p>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-md-4 mb-1">
+        <i class="fa fa-heart fa-4x orange-text"></i>
+        <h4 class="h4-responsive my-4">Inspire students</h4>
+        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima assumenda deleniti
+          hic.
+        </p>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-md-4 mb-1">
+        <i class="fa fa-bicycle fa-4x orange-text"></i>
+        <h4 class="h4-responsive my-4">Get support</h4>
+        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima assumenda deleniti
+          hic.
+        </p>
+      </div>
+      <!--Grid column-->
+
+    </div>
+  </div>
+  <!--Grid row-->
+
+  <div class="hide-on-md text-left">
+    <ul>
+      <li class="py-2">
+        <h4 class="h4-responsive">Earn extra income</h4>
+        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima assumenda deleniti
+          hic.
+        </p>
+      </li>
+      <li class="py-2">
+        <h4 class="h4-responsive">Inspire students</h4>
+        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima assumenda deleniti
+          hic.
+        </p>
+      </li>
+      <li class="py-2">
+        <h4 class="h4-responsive">Get support</h4>
+        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima assumenda deleniti
+          hic.
+        </p>
+      </li>
+    </ul>
+  </div>
+
+</section>
+
+<section class="bg-img1 text-center py-5">
+  <h1 class="h1-responsive white-text">Exceptional opportunities</h1>
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+        <h1 class="h1-responsive white-text">20m</h1>
+        <p class="white-text">Students worldwide</p>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+        <h1 class="h1-responsive white-text">50</h1>
+        <p class="white-text">Different languages</p>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+        <h1 class="h1-responsive white-text">30k</h1>
+        <p class="white-text">Supportive instructors</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="pt-5">
+  <h1 class="h1-responsive text-center">How it works</h1>
+  <div class="container hide-on-sm">
+    <div class="row">
+      <div class="col-md-12">
+
+        <ul class="stepper stepper-horizontal p-0">
+          <li class="">
+            <a (mouseenter)="activeSlide(0)">
+              <span class="circle">1</span>
+              <br>
+              <span class="label">Choose your topic</span>
+            </a>
+          </li>
+          <li class="">
+            <a (mouseenter)="activeSlide(1)">
+              <span class="circle">2</span>
+              <br>
+              <span class="label">Create a course</span>
+            </a>
+          </li>
+          <li class="">
+            <a (mouseenter)="activeSlide(2)">
+              <span class="circle">3</span>
+              <br>
+              <span class="label">Connect with students</span>
+            </a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+
+    <mdb-carousel [interval]="myInterval" class="carousel slide" [animation]="'slide'" [(activeSlide)]="activeSlideIndex">
+      <mdb-slide>
+        <div class="row">
+          <div class="col-md-6 col-lg-6 col-xl-6">
+            <h5>Choose your topic</h5>
+            <p>Share your knowledge</p>
+            <br>
+            <p>Teach what you know, or teach what you love. You can create a course on almost anything. Millions of students
+              are waiting, eager to learn and we’re here to help you make it happen.</p>
+            <br>
+            <p>Teach how you desire</p>
+            <br>
+            <p>We have multiple formats you can use to create your course. Teach in the style that makes sense for your topic
+              and personality.</p>
+          </div>
+          <div class="col-md-6 col-lg-6 col-xl-6">
+            <img src="https://www.udemy.com/staticx/udemy/images/teaching/v6/Sign_up_illustration.svg" alt="Choose your topic">
+          </div>
+        </div>
+      </mdb-slide>
+
+      <mdb-slide>
+        <div class="row">
+          <div class="col-md-6 col-lg-6 col-xl-6">
+            <h5>Create a course</h5>
+            <p>Get started</p>
+            <br>
+            <p>Our courses are packed with insights, examples, and opportunities for students to learn by doing and achieve
+              their goals.</p>
+            <br>
+            <p>Get support along the way</p>
+            <br>
+            <p>Use our resources to create engaging courses using our Teach Hub, a resource center for instructors. Join Studio
+              U, a peer to peer community of instructors, who are also creating their own courses. You’ll see our own team
+              members answering questions and providing insight.</p>
+          </div>
+          <div class="col-md-6 col-lg-6 col-xl-6">
+            <img src="https://www.udemy.com/staticx/udemy/images/teaching/v6/Create_course_illustration_v2.svg" alt="Create a course">
+          </div>
+        </div>
+      </mdb-slide>
+
+      <mdb-slide>
+        <div class="row">
+          <div class="col-md-6 col-lg-6 col-xl-6">
+            <h5>Connect with students</h5>
+            <p>Start sharing your course</p>
+            <br>
+            <p>Once your course is live on our marketplace start sharing it with friends, family, and your followers. Use our
+              marketing guides to help make your course a success. We know you want to share your course with the world,
+              let's make sure students can find it.</p>
+            <br>
+            <p>Promote to the world</p>
+            <br>
+            <p>Students can also find your course through our organic search and our marketing efforts.</p>
+          </div>
+          <div class="col-md-6 col-lg-6 col-xl-6">
+            <img src="https://www.udemy.com/staticx/udemy/images/teaching/v6/Start_sharing_illustration_v2.svg" alt="Connect with students">
+          </div>
+        </div>
+      </mdb-slide>
+    </mdb-carousel>
+
+  </div>
+
+  <div class="container-fluid how-it-works hide-on-md">
+    <div class="row">
+      <div class="">
+        <mdb-squeezebox [multiple]="false" aria-multiselectable="true">
+          <mdb-item *ngFor="let item of itemsList">
+            <mdb-item-head> {{ item.title }} </mdb-item-head>
+            <mdb-item-body>
+              <p>{{item.head1}}</p>
+              <br>
+              <p>{{ item.description1 }}</p>
+              <br>
+              <p>{{item.head2}}</p>
+              <br>
+              <p>{{ item.description2 }}</p>
+            </mdb-item-body>
+          </mdb-item>
+        </mdb-squeezebox>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<section>
+  <div class="container text-center my-5">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <h1 class="h1-responsive my-3">Become an instructor today</h1>
+        <p class="my-3">Join the world's largest online learning marketplace.</p>
+        <button class="btn btn-danger waves-light my-3" [routerLink]="['/instructor','register','instructor-signup']">Register</button>
+      </div>
+    </div>
+  </div>
+</section>

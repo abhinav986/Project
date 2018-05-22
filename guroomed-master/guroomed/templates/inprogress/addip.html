@@ -1,0 +1,20 @@
+<form method="post" action="/inprogress/store">
+{% csrf_token %}
+<div class="col-md-3">
+   <div class="md-form">
+
+    <i class="fa fa-book prefix blue-text" aria-hidden="true"></i>
+    <input type="text" id="courses_lecture_id" class="form-control" name="courses_lecture_id" required="required" placeholder="courses_lecture_id">
+    <input type="text" id="watching_video_duration" class="form-control" name="watching_video_duration" required="required" placeholder="watching_video_duration">
+</div>
+
+</div>
+<button type="submit" class="btn btn-warning">Submit</button>
+</form>
+<div class="col-md-2">
+    <p style="color:red;">
+        {% if error != '' %}
+            {{error}}
+        {% endif %}
+    </p>
+</div>

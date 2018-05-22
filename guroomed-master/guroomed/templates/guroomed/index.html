@@ -1,0 +1,49 @@
+{% extends "guroomed/base.html" %}
+
+{% block title %}Guroomed{% endblock %}
+
+{% load static %}
+
+
+{% block content %}
+<!--Rotating card-->
+<h2>Guroomed</h2><hr>
+<!--Section: Features v.1-->
+<section class="section feature-box">
+
+    <!--Section heading-->
+    <h1 class="section-heading">Why is it so great?</h1>
+    <!--Section sescription-->
+    <p class="section-description lead">Login Now! Using this platform, students can now watch videos and study notes.</p>
+
+    <!--First row-->
+    <div class="row features-big">
+        <!--First column-->
+        <div class="col-md-4 mb-r">
+            <a href="#"><i class="fa fa-book red-text"></i></a>
+            <h4 class="feature-title">Notes</h4>
+            <p class="grey-text">Candidates can read notes in this platform. Check out and practise it by coding and become an expert.</p>
+        </div>
+        <!--/First column-->
+
+        <!--Second column-->
+        <div class="col-md-4 mb-r">
+            <a href="/videos/view"><i class="fa fa-file-video-o green-text"></i></a>
+            <h4 class="feature-title">Videos</h4>
+            <p class="grey-text">Hey! You can also watch videos here. Learn by coding, get placed and have a bright future.</p>
+        </div>
+        <!--/Second column-->
+
+        <!--Third column-->
+        <div class="col-md-4 mb-r">
+            <i class="fa fa-user blue-text"></i>
+            <h4 class="feature-title">Quiz</h4>
+            <p class="grey-text">Only registered Students have all these access. </p>
+        </div>
+        <!--/Third column-->
+    </div>
+    <!--/First row-->
+
+</section>
+<!--/Section: Features v.1-->
+{% endblock %}

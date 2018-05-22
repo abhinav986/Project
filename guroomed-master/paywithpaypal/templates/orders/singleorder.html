@@ -1,0 +1,62 @@
+{% extends "guroomed/base.html" %}
+
+{% block title %}Guroomed{% endblock %}
+
+{% load static %}
+
+
+{% block content %}
+    <h2 class="center"><strong><b>Order : {{order.id}}</b></strong></h2>
+<table class="table table-striped">
+    <thead class="thead">
+        <tr>
+            <th>ID</th>                    
+            <td>{{order.id}}</td>                  
+        </tr>
+        <tr>
+            <th>Course</th> 
+            <td>{{order.course_id.title}}</td> 
+        </tr>
+        <tr>
+            <th>User</th> 
+            <td>{{order.user_id.first_name}} {{order.user_id.last_name}}</td> 
+        </tr>
+        <tr>
+            <th>Course Price</th> 
+            <td>{{order.course_price}}</td> 
+        </tr>
+        <tr>
+            <th>Tax Price</th> 
+            <td>{{order.tax_price}}</td> 
+        </tr>
+        <tr>
+            <th>Discount Price</th> 
+            <td>{{order.discount_price}}</td> 
+        </tr>
+        <tr>
+            <th>Total Price</th> 
+            <td>{{order.total_price}}</td> 
+        </tr>
+        <tr>
+            <th>Currency</th> 
+            <td>{{order.currency}}</td> 
+        </tr>
+        <tr>
+            <th>Created At</th> 
+            <td>{{order.created_at}}</td> 
+        </tr>
+        <tr>
+            <th>Updated At</th> 
+            <td>{{order.updated_at}}</td> 
+        </tr>
+        <tr>
+            <th>Action</th>
+            <td>
+                 <a href="/api/paypal/orders/delete/{{order.id}}" class="btn btn-danger btn-sm waves-effect waves-light"><i class="fa fa-trash" aria-hidden="true"></i> DELETE</a>
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+{% endblock %}

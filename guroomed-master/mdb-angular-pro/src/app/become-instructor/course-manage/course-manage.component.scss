@@ -1,0 +1,19 @@
+.nav-tabs{
+    background-color: #f2f3f5;
+    box-shadow: none;
+}
+
+.nav-tabs .nav-link{
+    color: #505763;
+}
+
+.nav-tabs .nav-link.active{
+    background: #007791;
+    color: #fff;
+    border-bottom: 1px solid #007791
+}
+
+.card{
+    border-radius: 0;
+    padding: 2rem;
+}

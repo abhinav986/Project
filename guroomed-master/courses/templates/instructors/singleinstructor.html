@@ -1,0 +1,51 @@
+{% extends "guroomed/base.html" %}
+
+{% block title %}Guroomed{% endblock %}
+
+{% load static %}
+
+
+{% block content %}
+<div class="col-md-3"></div>
+<div class="col-md-6 guroomed-courses">
+<h2 class="center"><strong><b>{{instructor.title}}</b></strong></h2>
+                 <a href="/api/courses/instruct/edit/{{instructor.id}}" class="btn btn-primary btn-sm waves-effect waves-light">EDIT</a>
+                 <a href="/api/courses/instruct/delete/{{instructor.id}}" class="btn btn-danger btn-sm waves-effect waves-light">DELETE</a>
+
+    <table class="table table-striped">
+    <tbody>
+        <tr>
+            <th>ID</th>
+            <th> :</th>
+            <td>{{instructor.id}}</td>                      
+        </tr>
+        <tr>
+            <th>Name</th>
+            <th> :</th> 
+            <td>{{instructor.user_id.first_name}}  {{instructor.user_id.last_name}}</td> 
+        </tr>
+        <tr>
+            <th>Rating</th>
+            <th> :</th>   
+            <td>{{instructor.rating}}</td>   
+        </tr>
+        <tr>
+            <th>Students</th>
+            <th> :</th>                 
+            <td>{{instructor.students}}</td>                 
+        </tr>
+        <tr>
+            <th>Reviews</th>
+            <th> :</th>
+            <td>{{instructor.reviews}}</td>
+        </tr>
+        <tr>
+            <th>Courses</th>
+            <th> :</th>
+            <td>{{instructor.courses}}</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>
+{% endblock %}

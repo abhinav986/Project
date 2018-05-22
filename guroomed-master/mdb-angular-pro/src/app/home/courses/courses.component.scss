@@ -1,0 +1,50 @@
+.btn-add-to-cart{
+    background-color: #ec5252;
+}
+
+.btn-lg{
+    padding: 0.5rem 5rem;
+}
+
+ul{
+    list-style: none;
+}
+
+.card{
+    border-radius: 0rem;
+}
+
+.card-body{
+    padding: 0.5rem;
+}
+
+.btn-sm{
+    padding: 0.5rem;
+}
+
+.white-black{
+    cursor: pointer;
+}
+
+.modal{
+    overflow-y: auto;
+}
+
+.model-body{
+    color: #686f7a;
+}
+
+//Course Image height
+.img-fluid{
+    display: block;
+    height: 122px;
+    overflow: hidden;
+    position: relative;
+}
+
+//for xs screen
+@media screen and (max-width: 444px) and (min-width: 335px){
+    .img-fluid{
+        height: 160px;
+    }
+}

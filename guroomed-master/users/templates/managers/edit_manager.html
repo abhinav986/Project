@@ -1,0 +1,55 @@
+{% extends "guroomed/base.html" %}
+
+{% block title %}Guroomed{% endblock %}
+
+{% load static %}
+
+{% block content %}
+<div class="row guroomed-courses">
+<div class="col-md-12">
+<div class="col-md-6">
+<h4 class="center"><strong><b>Edit Manager</b></strong></h4>
+</div>
+</div>
+<div class="col-md-12">
+<div class="col-md-2">
+</div>
+<form method="post" action="/api/user/manager/edit/{{ manager.id }}/">
+{% csrf_token %}
+<div class="col-md-4">
+<div class="md-form">
+    <i class="fa fa-envelope prefix red-text" aria-hidden="true"></i>
+    <input type="text" id="email" class="form-control" name="email" value={{manager.email}}>
+    <label for="email ">Email</label>
+</div> 
+<div class="md-form">
+    <i class="fa fa-user prefix green-text" aria-hidden="true"></i>
+    <input type="text" id="first_name" class="form-control" name="first_name" value={{manager.first_name}}>
+    <label for="first_name">First Name</label>
+</div> 
+<div class="md-form">
+    <i class="fa fa-user prefix green-text" aria-hidden="true"></i>
+    <input type="text" id="last_name" class="form-control" name="last_name" value={{manager.last_name}}>
+    <label for="last_name">Last Name</label>
+</div> 
+<button type="submit" class="btn btn-warning">Submit</button>
+</div>
+</form>
+<div class="col-md-12">
+<div class="col-md-2"></div>
+<div class="col-md-2">
+    <p style="color:red;">
+        {% if error != '' %}
+            {{error}}
+        {% endif %}
+    </p>
+</div>
+</div>
+</div>
+</div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+        $('.mdb-select').material_select();
+        });
+    </script>
+{% endblock %}

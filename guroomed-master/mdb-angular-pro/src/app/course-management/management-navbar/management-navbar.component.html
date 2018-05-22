@@ -1,0 +1,122 @@
+<!--Double navigation-->
+<header class="manager">
+
+    <!-- Sidebar navigation -->
+    <mdb-sidenav #sidenav class="sn-bg-1" [fixed]="false" style="transform: translateX(0%);">
+
+        <logo>
+            <li>
+                <div class="logo-wrapper waves-light text-center my-4">
+                    <div class="avatar text-center" *ngIf="nameImagePlaceholder == ''">
+                        <a>
+                            <img [src]="this.profileImage" class="rounded-circle">
+                        </a>
+                    </div>
+                    <div class="user-text-avatar text-center" *ngIf="nameImagePlaceholder != ''">
+                        <span>{{nameImagePlaceholder | uppercase}}</span>
+                    </div>
+                </div>
+            </li>
+            <!--/. Logo -->
+        </logo>
+
+        <links>
+            <!--Social-->
+            <li>
+                <ul class="social">
+                </ul>
+            </li>
+            <!--/Social-->
+
+            <!-- Side navigation links -->
+            <li>
+                <ul class="collapsible collapsible-accordion">
+                    <mdb-squeezebox [multiple]="false" aria-multiselectable="false">
+                        <!-- Collapsible link -->
+                        <mdb-item>
+                            <mdb-item-head mdbRippleRadius>
+                                <i class="fa fa-line-chart"></i>Course Status</mdb-item-head>
+                            <mdb-item-body>
+                                <ul>
+                                    <li>
+                                        <a class="waves-effect" mdbRippleRadius>Approved</a>
+                                    </li>
+                                    <li>
+                                        <a class="waves-effect" mdbRippleRadius>Rejected</a>
+                                    </li>
+                                </ul>
+                            </mdb-item-body>
+                        </mdb-item>
+                        <!-- Collapsible link -->
+                        <mdb-item>
+                            <mdb-item-head mdbRippleRadius>
+                                <i class="fa fa-tags"></i>Course Catergory</mdb-item-head>
+                            <mdb-item-body>
+                                <ul>
+                                    <li>
+                                        <a class="waves-effect" mdbRippleRadius>Development</a>
+                                    </li>
+                                    <li>
+                                        <a class="waves-effect" mdbRippleRadius>Design</a>
+                                    </li>
+                                </ul>
+                            </mdb-item-body>
+                        </mdb-item>
+
+                        <!-- Simple link -->
+                        <mdb-item class="no-collase">
+                            <mdb-item-head mdbRippleRadius [routerLink]="['/course-management','reviewer-list']" *ngIf="userType == 'manager'">
+                                <i class="fa fa-list" aria-hidden="true"></i>Reviewer List</mdb-item-head>
+                            <mdb-item-body></mdb-item-body>
+                        </mdb-item>
+
+                        <mdb-item class="no-collase">
+                            <mdb-item-head mdbRippleRadius [routerLink]="['/profile', { outlets: { profile:['editProfile']}}]">
+                                <i class="fa fa-user-circle-o" aria-hidden="true"></i>Profile</mdb-item-head>
+                            <mdb-item-body></mdb-item-body>
+                        </mdb-item>
+
+                    </mdb-squeezebox>
+                </ul>
+            </li>
+            <!--/. Side navigation links -->
+        </links>
+        <div class="sidenav-bg mask-strong"></div>
+    </mdb-sidenav>
+    <!--/. Sidebar navigation -->
+
+    <!-- Navbar -->
+    <mdb-navbar SideClass="navbar fixed-top scrolling-navbar double-nav text-muted" [containerInside]="false">
+
+        <!-- <navlinks class="">
+            <div class="float-left">
+                <a (click)="sidenav.show()" class="button-collapse hidden-nav-button-collapse">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </navlinks> -->
+
+        <div class="breadcrumbs breadcrumbs-hidden-nav breadcrumb-dn">
+            <a [routerLink]="['']"><i class="fa fa-home"></i>&nbsp;</a>
+            <a class="" [routerLink]="['/course-management', 'dashboard', 'all']" *ngIf="userType == 'manager'">Guroomed Manager</a>
+            <a class="" [routerLink]="['/course-reviewer', 'dashboard', 'all']" *ngIf="userType == 'reviewer'">Guroomed Reviewer</a>
+        </div>
+
+        <navlinks class="">
+            <ul class="nav navbar-nav nav-flex-icons ml-auto ie-double-nav">
+                <li class="nav-item" *ngIf="userType == 'manager'">
+                    <button type="button" class="btn btn-flat" mdbWavesEffect [routerLink]="['/course-management','create-reviewer']">
+                        <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Add Reviewer</button>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="btn btn-flat" mdbWavesEffect (click)="logout()">
+                        <i class="fa fa-power-off" aria-hidden="true"></i>&nbsp;Log Out</button>
+                </li>
+            </ul>
+        </navlinks>
+
+    </mdb-navbar>
+    <!--/. Navbar -->
+
+</header>
+<!--/.Double navigation-->

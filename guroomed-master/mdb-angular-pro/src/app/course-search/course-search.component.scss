@@ -1,0 +1,48 @@
+.container{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+p{
+    margin: 0rem;
+}
+
+.rating-price{
+    text-align: right;
+    position: absolute;
+    right: 1rem;
+    top: 4.8rem;
+}
+
+.btn[class*="btn-outline-"]{
+    padding: 0.2rem 0.3rem;
+}
+
+.btn-outline-primary{
+    border: 1px solid #007791;
+    color: #aaa !important;
+    box-shadow: none;
+}
+
+ul{
+    list-style: none;
+    padding: 0rem;
+}
+
+li{
+    float: left;
+    margin-right: 1rem;
+}
+
+
+@media only screen and (min-width: 400px) {
+    .float_right {
+        float: right;
+    }
+}
+
+@media only screen and (max-width: 398px) {
+    ul {
+        float :right;
+    }
+}

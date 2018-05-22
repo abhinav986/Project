@@ -1,0 +1,167 @@
+{% extends "guroomed/base.html" %}
+
+{% block title %}Guroomed{% endblock %}
+
+{% load static %}
+
+
+{% block content %}
+<div class="col-md-6 guroomed-courses">
+    <h2 class="center"><strong><b>{{course.title}}</b></strong></h2>
+</div>
+<div class="col-md-6 guroomed-courses">
+        <a href="/api/courses/edit/{{course.id}}" class="btn btn-primary btn-sm waves-effect waves-light pull-right">EDIT</a>
+        <a href="/api/courses/delete/{{course.id}}" class="btn btn-danger btn-sm waves-effect waves-light pull-right">DELETE</a><br><br>
+        <a href="/api/courses/curriculumsec" class="btn btn-danger btn-sm waves-effect waves-light pull-right">Curriculum Sections</a><br><br>
+        <a href="/api/courses/curriculumlec" class="btn btn-danger btn-sm waves-effect waves-light pull-right">Curriculum Lectures</a><br><br>
+    {% if request.user.is_authenticated %}
+        <a href="/api/paypal/checkout/?course_id={{course.id}}" class="btn btn-danger btn-sm waves-effect waves-light pull-right">Add to Cart</a>
+    {% else %}
+        <a href="/api/login" class="btn btn-danger btn-sm waves-effect waves-light pull-right">Login to Add in Cart</a>
+    {% endif %}
+</div>
+<div class="col-md-12">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading center" style="font-weight:bold;">About Course</div>
+            <div class="panel-body">
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th> :</th>
+                        <td>{{course.id}}</td>
+                    </tr>
+                    <tr>
+                        <th>Title</th>
+                        <th> :</th>
+                        <td>{{course.title}}</td>
+                    </tr>
+                    <tr>
+                        <th>Subtitle</th>
+                        <th> :</th>
+                        <td>{{course.subtitle}}</td>
+                    </tr>
+                    <tr>
+                        <th>Subcategory</th>
+                        <th> :</th>
+                        <td>{{course.course_subcategory_id.name}}</td>
+                    </tr>
+                    <tr>
+                        <th>Language</th>
+                        <th> :</th>
+                        <td>{{course.course_language_id.name}}</td>
+                    </tr>
+                    <tr>
+                        <th>Instructor</th>
+                        <th> :</th>
+                        <td>
+                            {% for instructor in instructors %}
+                                {{instructor.user_id.first_name}} {{instructor.user_id.last_name}},
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Tags</th>
+                        <th> :</th>
+                        <td>
+                            {% for tag in tags %}
+                                {{tag.name}},
+                            {% endfor %}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading center" style="font-weight:bold;">Details</div>
+            <div class="panel-body">
+                <table>
+                    <tr>
+                        <th>Description</th>
+                        <th> :</th>
+                        <td>{{course.description}}</td>
+                    </tr>
+                    <tr>
+                        <th>Requirements</th>
+                        <th> :</th>
+                        <td>{{course.requirements}}</td>
+                    </tr>
+                    <tr>
+                        <th>What will I learn</th>
+                        <th> :</th>
+                        <td>{{course.what_will_i_learn}}</td>
+                    </tr>
+                    <tr>
+                        <th>Students Enrolled</th>
+                        <th> :</th>
+                        <td>{{course.students_enrolled}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading center" style="font-weight:bold;">Course Fee</div>
+            <div class="panel-body">
+                <table>
+                    <tr>
+                        <th>Price</th>
+                        <th> :</th>
+                        <td>{{course.price}}</td>
+                    </tr>
+                    <tr>
+                        <th>Discount</th>
+                        <th> :</th>
+                        <td>{{course.discount}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading center" style="font-weight:bold;">Ratings</div>
+            <div class="panel-body">
+                <table>
+                    <tr>
+                        <th>Rating</th>
+                        <th> :</th>
+                        <td>{{course.ratings}}</td>
+                    </tr>
+                    <tr>
+                        <th>Rating Count</th>
+                        <th> :</th>
+                        <td>{{course.rating_count}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12">
+<div class="col-md-6">
+    <div class="panel panel-default">
+        <div class="panel-heading center" style="font-weight:bold;">Timing</div>
+        <div class="panel-body">
+            <table>
+                <tr>
+                    <th>Created At</th>
+                    <th> :</th>
+                    <td>{{course.created_at}}</td>
+                </tr>
+                <tr>
+                    <th>Updated At</th>
+                    <th> :</th>
+                    <td>{{course.updated_at}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

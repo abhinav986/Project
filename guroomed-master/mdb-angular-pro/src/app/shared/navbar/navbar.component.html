@@ -1,0 +1,242 @@
+<!--Double navigation-->
+<header *ngIf="nav.visible" class="guroomed-user">
+
+  <!-- Sidebar navigation -->
+  <mdb-sidenav #sidenav class="sg-bn-1 fixed" [fixed]="false">
+
+    <!-- <logo>
+          <li>
+            <div class="logo-wrapper waves-light">
+              <h4>
+                <strong>
+                  <a [routerLink]="['/']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">Guroomed</a>
+                </strong>
+              </h4>
+            </div>
+          </li>
+        </logo> -->
+
+    <links>
+      <!-- Side navigation links -->
+      <li>
+        <ul class="collapsible collapsible-accordion">
+          <mdb-squeezebox [multiple]="false" aria-multiselectable="false">
+
+            <mdb-item class="no-collase">
+              <mdb-item-head mdbRippleRadius [routerLink]="['/cart']">
+                My Cart {{(counter == '' || counter == undefined ) ? '' : +' ('+ counter +')'}}</mdb-item-head>
+              <mdb-item-body></mdb-item-body>
+            </mdb-item>
+
+            <!-- Simple link -->
+            <mdb-item>
+              <mdb-item-head mdbRippleRadius *ngIf="authService.loggedIn()">
+                My Account</mdb-item-head>
+              <mdb-item-body>
+                <ul>
+                  <li>
+                    <a class="waves-effect" mdbRippleRadius [routerLink]="['/mycourses']">My Courses</a>
+                  </li>
+                  <li>
+                    <a class="waves-effect" mdbRippleRadius [routerLink]="['profile',{ outlets: { profile:['editProfile']}}]">Profile</a>
+                  </li>
+                  <li>
+                    <a class="waves-effect" mdbRippleRadius [routerLink]="['/transaction']">Transactions</a>
+                  </li>
+                </ul>
+              </mdb-item-body>
+            </mdb-item>
+
+            <mdb-item class="no-collase" *ngIf="authService.loggedIn()">
+              <mdb-item-head mdbRippleRadius (click)="onLogoutClick()">
+                Log Out</mdb-item-head>
+              <mdb-item-body></mdb-item-body>
+            </mdb-item>
+
+            <mdb-item class="no-collase" *ngIf="!authService.loggedIn()">
+              <mdb-item-head mdbRippleRadius (click)="login.show()">
+                Log In</mdb-item-head>
+              <mdb-item-body></mdb-item-body>
+            </mdb-item>
+
+            <mdb-item class="no-collase" *ngIf="!authService.loggedIn()">
+              <mdb-item-head mdbRippleRadius (click)="signup.show()">
+                Sign Up</mdb-item-head>
+              <mdb-item-body></mdb-item-body>
+            </mdb-item>
+
+          </mdb-squeezebox>
+        </ul>
+      </li>
+      <!--/. Side navigation links -->
+    </links>
+    <div class="sidenav-bg mask-strong"></div>
+  </mdb-sidenav>
+  <!--/. Sidebar navigation -->
+
+  <!-- Navbar -->
+  <mdb-navbar SideClass="navbar navbar-toggleable-md navbar-expand-lg scrolling-navbar double-nav pt-0 pb-0" [containerInside]="false">
+
+    <navlinks class="navbar-container">
+      <!-- SideNav slide-out button -->
+      <div class="float-left d-md-none">
+        <a (click)="sidenav.show()" class="button-collapse">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+      <!--/. SideNav slide-out button -->
+    </navlinks>
+
+    <logo>
+      <!-- Breadcrumb-->
+      <div class="breadcrumbs breadcrumb-dn mr-auto d-block">
+        <h2>
+          <strong>
+            <a style="color:#29303b;" [routerLink]="['/']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">Guroomed</a>
+          </strong>
+        </h2>
+      </div>
+      <!--/. Breadcrumb-->
+    </logo>
+
+    <links>
+      <app-elastic-search></app-elastic-search>
+    </links>
+
+    <links>
+      <ul class="nav navbar-nav nav-flex-icons ml-auto ie-double-nav">
+        <li class="nav-item">
+          <button type="button" class="nav-link btn btn-outline-default waves-light clearfix d-none d-md-inline-block" mdbRippleRadius
+            [routerLink]="['/instructor']" *ngIf="authService.getUserType() == 'student' || !authService.loggedIn()">Become an Instructor</button>
+
+          <button type="button" class="nav-link btn btn-outline-default waves-light clearfix d-none d-md-inline-block" mdbRippleRadius
+            [routerLink]="['/instructor', 'dashboard']" *ngIf="authService.getUserType() == 'instructor'">Instructor</button>
+
+          <button type="button" class="nav-link btn btn-outline-default waves-light clearfix d-none d-md-inline-block" mdbRippleRadius
+            [routerLink]="['/course-management', 'dashboard', 'all']" *ngIf="authService.getUserType() == 'manager'">Go To Dashboard</button>
+
+          <button type="button" class="nav-link btn btn-outline-default waves-light clearfix d-none d-md-inline-block" mdbRippleRadius
+            [routerLink]="['/course-reviewer', 'dashboard', 'all']" *ngIf="authService.getUserType() == 'reviewer'">Go To Dashboard</button>
+        </li>
+
+        <li class="nav-item" *ngIf="authService.loggedIn()">
+          <button type="button" class="nav-link btn btn-outline-default waves-light clearfix d-none d-md-inline-block" mdbRippleRadius
+            [routerLink]="['/mycourses']">My Courses</button>
+        </li>
+
+        <li class="nav-item">
+          <a class="btn waves-light clearfix d-none d-md-inline-block" [routerLink]="['/cart']" mdbRippleRadius style="border-radius: 50%; padding: 0.9rem;box-shadow:none;">
+            <i class="fa fa-shopping-cart fa-2x"></i>
+          </a>
+          <span class="counter clearfix d-none d-md-inline-block" *ngIf="counter">{{(counter == '' || counter == undefined ) ? '' : counter }}</span>
+        </li>
+
+        <li class="nav-item" *ngIf="!authService.loggedIn()">
+          <button type="button" class="nav-link btn btn-outline-info waves-light clearfix d-none d-md-inline-block" (click)="login.show()"
+            mdbRippleRadius>Log In</button>
+        </li>
+
+        <li class="nav-item" *ngIf="!authService.loggedIn()">
+          <button type="button" class="nav-link btn btn-danger waves-light clearfix d-none d-md-inline-block" (click)="signup.show()"
+            mdbRippleRadius>Sign Up</button>
+        </li>
+
+        <li class="nav-item dropdown btn-group clearfix d-none d-md-inline-block" dropdown *ngIf="authService.loggedIn()">
+          <a dropdownToggle mdbRippleRadius type="button" class="avatar nav-link dropdown-toggle waves-light" mdbRippleRadius>
+            <img [src]="profileImage" class="img-fluid rounded-circle z-depth-0" *ngIf="nameImagePlaceholder == ''">
+            <div class="user-text-avatar text-center" *ngIf="nameImagePlaceholder != ''">
+              <span>{{nameImagePlaceholder | uppercase}}</span>
+            </div>
+          </a>
+          <div class="dropdown-menu dropdown-primary dropdown-menu-right" role="menu" *ngIf="authService.loggedIn()">
+            <a class="dropdown-item waves-light" mdbRippleRadius [routerLink]="['profile',{ outlets: { profile:['editProfile']}}]">
+              My Account</a>
+            <a class="dropdown-item waves-light" mdbRippleRadius [routerLink]="['/transaction']">
+              Transactions</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item waves-light" mdbRippleRadius>Help</a>
+            <a class="dropdown-item waves-light" mdbRippleRadius (click)="onLogoutClick()">Log Out</a>
+          </div>
+        </li>
+
+      </ul>
+    </links>
+  </mdb-navbar>
+  <!--/. Navbar -->
+
+</header>
+<!--/.Double navigation-->
+
+
+<!-- Login Modal -->
+<div mdbModal #login="mdb-modal" class="modal fade" id="centralModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="heading lead">Login To Guroomed!</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="login.hide()">
+          <span aria-hidden="true" class="white-black">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-login (onLoggedIn)="getProfile()"></app-login>
+      </div>
+      <div class="modal-footer" style="justify-content: flex-start;display: block;">
+        <div class="row">
+          <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 col-xl-7 text-center">
+            <a id="forgot_password" data-toggle="modal" data-target="#basicExample" (click)="forgot.show(); login.hide();">Forgot Password</a>
+          </div>
+          <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 text-center">
+            <a id="signup_link" (click)="login.hide(); signup.show();">Sign Up</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ./ Login Modal -->
+
+<!-- Sign Up Modal -->
+<div mdbModal #signup="mdb-modal" class="modal fade" id="centralModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="heading lead">Sign Up</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="signup.hide()">
+          <span aria-hidden="true" class="white-black">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-sign-up></app-sign-up>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <p>Already have account
+          <a id="login_link" (click)="signup.hide(); login.show();">Login</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Sign Up Modal -->
+
+<!-- Forgot modal -->
+<div mdbModal #forgot="mdb-modal" class="modal fade" id="centralModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="heading lead">Forgot Password</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="forgot.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-forgot-password></app-forgot-password>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>

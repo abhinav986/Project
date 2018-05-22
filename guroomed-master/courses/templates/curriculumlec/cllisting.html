@@ -1,0 +1,43 @@
+{% extends "guroomed/base.html" %}
+
+{% block title %}Guroomed{% endblock %}
+
+{% load static %}
+
+
+{% block content %}
+    <h2 class="center"><strong><b>Category Listing</b></strong></h2>
+    <a href="/api/courses/curriculumlec/create"><span class="btn btn-warning pull-right waves-effect waves-light"><i class="fa fa-plus" aria-hidden="true"></i> ADD NEW</span></a>
+<table class="table table-striped">
+    <thead class="thead-inverse">
+
+        <tr>
+            <th>ID</th>                      
+            <th>curriculum_section</th> 
+            <th>title</th>
+            <th>description</th>
+            <th>preview_url</th>
+            <th>video_url</th>
+            <th>order_num</th>
+            <th>action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cl in cls %}
+        <tr>
+            <td>{{cl.id}}</td>                      
+            <td>{{cl.curriculum_section_id.title}}</td> 
+            <td>{{cl.title}}</td> 
+            <td>{{cl.description}}</td> 
+            <td>{{cl.preview_url}}</td> 
+            <td>{{cl.video_url}}</td> 
+            <td>{{cl.order_num}}</td> 
+            <td>
+                 <a href="/api/courses/curriculumlec/edit/{{cl.id}}" class="btn btn-success btn-sm waves-effect waves-light"><i class="fa fa-pencil" aria-hidden="true"></i> EDIT</a>
+                 <a href="/api/courses/curriculumlec/delete/{{cl.id}}" class="btn btn-danger btn-sm waves-effect waves-light"><i class="fa fa-trash" aria-hidden="true"></i> DELETE</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

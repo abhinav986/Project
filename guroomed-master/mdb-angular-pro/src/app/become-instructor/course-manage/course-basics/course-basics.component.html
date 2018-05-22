@@ -1,0 +1,140 @@
+<h4 class="h4-responsive">Course Landing Page</h4>
+<hr>
+<br>
+<p>Your Course Landing Page is the first thing students see when they find your course in the marketplace and will influence
+  student enrollments. Fill in the details below to build your landing page, and click ‘Preview’ to see how it will appear
+  to students in the marketplace.</p>
+<br>
+<div class="">
+  <section>
+
+    <form (submit)="onSubmitBasicCourse($event)" #form="ngForm">
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+          <div class="md-form">
+            <input mdbActive type="text" id="course_title" class="form-control" name="course_title" [(ngModel)]="basicCourse.course_title"
+              #course_title>
+            <label for="course_title" class="">Course Title &nbsp;
+              <span class="mandatory">*</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+          <div class="md-form">
+            <input mdbActive type="text" id="course_subtitle" class="form-control" name="course_subtitle" [(ngModel)]="basicCourse.course_subtitle"
+              #course_subtitle>
+            <label for="course_subtitle" class="">Course Subtitle &nbsp;
+              <span class="mandatory">*</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <!-- <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <label for="" class="">Course Description</label>
+          <div class="md-form">
+            <input mdbActive type="text" id="course_description" class="form-control" name="course_description" [(ngModel)]="basicCourse.course_description"
+              #course_description placeholder="Insert your course description">
+          </div>
+        </div>
+      </div> -->
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+          <mdb-select [options]="languageList" name="language" [(ngModel)]="basicCourse.language" #language placeholder="Select Language"></mdb-select>
+          <label>Language &nbsp;
+            <span class="mandatory">*</span>
+          </label>
+        </div>
+
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+          <mdb-select [options]="levelList" name="level" [(ngModel)]="basicCourse.level" placeholder="Select Level"></mdb-select>
+          <label>Level &nbsp;
+            <span class="mandatory">*</span>
+          </label>
+        </div>
+
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+          <mdb-select [options]="categoryList" name="category" [(ngModel)]="basicCourse.category" placeholder="Select Category"></mdb-select>
+          <label>Category &nbsp;
+            <span class="mandatory">*</span>
+          </label>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+          <div class="md-form">
+            <input mdbActive type="text" id="course_price" class="form-control" name="course_price" [(ngModel)]="basicCourse.course_price"
+              #course_price>
+            <label for="course_price" class="">Course Price (USD)&nbsp;
+              <span class="mandatory">*</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <p>Course Image</p>
+      <div class="row p-2 m-0" style="border: 1px solid #ccc">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 py-4">
+          <p>Make your course stand out with a great image from our design team based on your preferences and style.</p>
+          <p>Important guidelines: 750x422 pixels; .jpg, .jpeg,. gif, or .png. no text on the image.</p>
+          <div class="file-field">
+            <div class="btn btn-primary btn-sm waves-light" mdbRippleRadius>
+              <span>Upload File</span>
+              <input type="file" accept="image/*" (change)="imageUpload($event.target.files)">
+            </div>
+          </div>
+          <br>
+          <div class="">
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped" role="progressbar" [style.width.%]="percentComplete" aria-valuenow="percentComplete"
+                aria-valuemin="0" aria-valuemax="100">{{percentComplete | number : '1.0-0'}}%
+              </div>
+            </div>
+            <p style="color:#ec5252" *ngIf="error">
+              <i class="fa fa-warning"></i>&nbsp;{{error}}</p>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 text-center">
+          <img [src]="imageUrl" class="" [style.opacity]="loading ? '0.2' : '1'">
+          <i class="fa fa-circle-o-notch fa-spin fa-fw" *ngIf="loading"></i>
+        </div>
+      </div>
+
+      <br>
+
+      <p>Promotional Video</p>
+      <div class="row p-2 m-0" style="border: 1px solid #ccc">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 py-4">
+          <p>Students who watch a well-made promo video are 5X more likely to enroll in your course. We've seen that statistic
+            go up to 10X for exceptionally awesome videos.</p>
+          <div class="file-field">
+            <div class="btn btn-primary btn-sm waves-light" mdbRippleRadius>
+              <span>Upload File</span>
+              <input type="file" accept="video/*" (change)="videoUpload($event.target.files)">
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 text-center">
+          <img [src]="imageUrl" class="">
+        </div> -->
+      </div>
+
+      <br>
+
+      <button type="submit" class="btn btn-danger waves-light">Save as draft &nbsp;
+        <i class="fa fa-spinner fa-spin" *ngIf="processing"></i>
+      </button>
+    </form>
+
+  </section>
+</div>

@@ -1,0 +1,81 @@
+<section>
+  <div class="container py-4">
+    <div class="row justify-content-md-center">
+      <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 col-xl-5" *ngIf="!success">
+        <div class="card">
+          <h4 class="card-header h4-responsive">Become a Guroomed Instructor!</h4>
+          <div class="card-body">
+            <p class="card-text">Discover a supportive community of online instructors. Get instant access to all course creation resources.</p>
+            <br>
+            <form (submit)="instrunctorSignUp()" #form="ngForm">
+              <div class="md-form">
+                <i class="fa fa-user prefix grey-text"></i>
+                <input type="text" id="firstName" name="firstName" class="form-control" [(ngModel)]="instructorSignUpData.firstName" #firstName="ngModel"
+                  mdbActive required [disabled]="alreadyLoggedIn">
+                <label for="firstName">First Name
+                  <span class="mandatory">*</span>
+                </label>
+                <span *ngIf="firstName.touched && !firstName.valid" class="error-msg">Enter First Name</span>
+              </div>
+
+              <div class="md-form">
+                <i class="fa fa-user prefix grey-text"></i>
+                <input type="text" id="lastName" name="lastName" class="form-control" [(ngModel)]="instructorSignUpData.lastName" #lastName="ngModel" mdbActive
+                  required [disabled]="alreadyLoggedIn">
+                <label for="lastName">Last Name
+                  <span class="mandatory">*</span>
+                </label>
+                <span *ngIf="lastName.touched && !lastName.valid" class="error-msg">Enter Last Name</span>
+              </div>
+
+              <div class="md-form">
+                <i class="fa fa-envelope prefix grey-text"></i>
+                <input type="text" id="emailId" name="emailId" class="form-control" [(ngModel)]="instructorSignUpData.emailId" #emailId="ngModel" mdbActive
+                  required [disabled]="alreadyLoggedIn">
+                <label for="emailId">E-mail
+                  <span class="mandatory">*</span>
+                </label>
+                <span *ngIf="emailId.touched && !emailId.valid" class="error-msg">Enter Email</span>
+              </div>
+
+              <div class="md-form">
+                <i class="fa fa-lock prefix grey-text"></i>
+                <input type="password" id="new_password" name="new_password" class="form-control" [(ngModel)]="instructorSignUpData.new_password" #new_password="ngModel"
+                  autocomplete mdbActive required>
+                <label for="new_password">Password
+                  <span class="mandatory">*</span>
+                </label>
+                <span *ngIf="new_password.touched && !new_password.valid" class="error-msg">Enter Password</span>
+              </div>
+
+              <div class="md-form" *ngIf="!alreadyLoggedIn">
+                <i class="fa fa-lock prefix grey-text"></i>
+                <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" [(ngModel)]="instructorSignUpData.confirmPassword" #confirmPassword="ngModel"
+                  autocomplete required mdbActive>
+                <label for="confirmPassword">Confirm Password
+                  <span class="mandatory">*</span>
+                </label>
+                <span *ngIf="confirmPassword.touched && !confirmPassword.valid" class="error-msg">Enter Confirm Password</span>
+              </div>
+
+              <div class="text-center">
+                <button type="submit" class="btn btn-danger waves-light" data-dismiss="modal" mdbRippleRadius [disabled]="form.invalid">Register &nbsp;
+                  <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
+                </button>
+                <p style="font-size: 10px;">By signing up, you agree to our <a [routerLink]="['/terms-and-policy']" (click)="autoShownModal.hide()">Terms of Use & Privacy Policy</a></p>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- On success registration-->
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8" *ngIf="success">
+        <div class="alert alert-success" role="alert">
+          <h4 class="alert-heading h4-responsive">{{response}}...!</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

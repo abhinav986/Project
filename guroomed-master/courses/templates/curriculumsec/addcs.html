@@ -1,0 +1,41 @@
+{% extends "guroomed/base.html" %}
+
+{% block title %}Guroomed{% endblock %}
+
+{% load static %}
+
+
+{% block content %}
+    <h2 class="center"><strong><b>Curriculum Section Add</b></strong></h2>
+<form method="post" action="/api/courses/curriculumsec/store">
+{% csrf_token %}
+<div class="col-md-3">
+<div class="md-form">
+    <select class="mdb-select" name="course_id">
+        <option value="" disabled selected>Select Course</option>
+        {% for course in courses %}
+            <option value="{{course.id}}">{{course.title}}</option>
+        {% endfor %}
+    </select>
+    <input type="text" id="title" class="form-control" name="title" required="required" placeholder="title">
+    <input type="text" id="order_num" class="form-control" name="order_num" required="required" placeholder="order_num">
+    <input type="text" id="no_lectures" class="form-control" name="no_lectures" required="required" placeholder="no_lectures">
+    <input type="text" id="duration" class="form-control" name="duration" required="required" placeholder="duration">
+    <button type="submit" class="btn btn-warning">Submit</button>
+</div>
+
+</div>
+</form>
+<div class="col-md-2">
+    <p style="color:red;">
+        {% if error != '' %}
+            {{error}}
+        {% endif %}
+    </p>
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.mdb-select').material_select();
+    });
+</script>
+{% endblock %}

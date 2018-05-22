@@ -1,0 +1,72 @@
+<!--Register form-->
+<div class="row">
+  <div class="col-md-12 text-center error_message">
+    {{signupError}}
+  </div>
+</div>
+
+<form (submit)="onSubmitSignUP()" #form="ngForm">
+  <div class="md-form">
+    <i class="fa fa-user prefix grey-text"></i>
+    <input type="text" id="firstName" name="firstName" class="form-control" [(ngModel)]="signUpData.firstName" #firstName="ngModel"
+      mdbActive required>
+    <label for="firstName">First Name
+      <span class="mandatory">*</span>
+    </label>
+    <span *ngIf="firstName.touched && !firstName.valid" class="error-msg">First name required</span>
+  </div>
+
+  <div class="md-form">
+    <i class="fa fa-user prefix grey-text"></i>
+    <input type="text" id="lastName" name="lastName" class="form-control" [(ngModel)]="signUpData.lastName" #lastName="ngModel"
+      mdbActive required>
+    <label for="lastName">Last Name
+      <span class="mandatory">*</span>
+    </label>
+    <span *ngIf="lastName.touched && !lastName.valid" class="error-msg">Last name Required</span>
+  </div>
+
+  <div class="md-form">
+    <i class="fa fa-envelope prefix grey-text"></i>
+    <input type="text" id="emailId" name="emailId" class="form-control" [(ngModel)]="signUpData.emailId" #emailId="ngModel" mdbActive
+      required>
+    <label for="emailId">E-mail
+      <span class="mandatory">*</span>
+    </label>
+    <span *ngIf="emailId.touched && !emailId.valid" class="error-msg">Email required</span>
+  </div>
+
+  <div class="md-form">
+    <i class="fa fa-lock prefix grey-text"></i>
+    <input type="password" id="new_password" name="new_password" class="form-control" [(ngModel)]="signUpData.new_password" #new_password="ngModel"
+      autocomplete mdbActive required>
+    <label for="new_password">Password
+      <span class="mandatory">*</span>
+    </label>
+    <span *ngIf="new_password.touched && !new_password.valid" class="error-msg">Password required</span>
+  </div>
+
+  <div class="md-form">
+    <i class="fa fa-lock prefix grey-text"></i>
+    <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" [(ngModel)]="signUpData.confirmPassword"
+      #confirmPassword="ngModel" autocomplete required mdbActive>
+    <label for="confirmPassword">Confirm Password
+      <span class="mandatory">*</span>
+    </label>
+    <span *ngIf="confirmPassword.touched && !confirmPassword.valid" class="error-msg">Password required</span>
+  </div>
+
+  <div class="text-center">
+    <button type="submit" class="btn btn-deep-orange waves-light" data-dismiss="modal" mdbRippleRadius [disabled]="form.invalid">Sign up &nbsp;
+      <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
+    </button>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-12">
+      <p id="TandC">By signing in you agree to our
+        <a [routerLink]="['terms-and-policy']" (click)="autoShownModal.hide()">Terms of Use & Privacy Policy</a>
+      </p>
+    </div>
+  </div>
+</form>
+<!--/Register form-->

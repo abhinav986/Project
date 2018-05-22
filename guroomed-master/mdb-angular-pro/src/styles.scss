@@ -1,0 +1,363 @@
+@import "~css-star-rating/scss/star-rating";
+
+body {
+    font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+    color: #29303b;
+}
+
+.navbar{
+    background-color: #fff;
+}
+
+.mdb-skin .guroomed-user .navbar {
+    background-color: #fff;
+}
+
+.form-control {
+    padding-bottom: 0rem;
+}
+
+mdb-completer .completer-holder{
+    margin-bottom: 0rem;
+    color: #aaa;
+}
+
+mdb-completer .completer-holder input[type=search]{
+    padding: 0.9rem 0rem 0.9rem 0.9rem;
+    background-color: #f2f3f5;
+    border-bottom: none;
+    // border: 0.2px solid #ccc;
+}
+
+input[type=search]:focus:not([readonly]){
+    border-bottom: none;
+    box-shadow: none;
+    background-color: #fff;
+    border: 0.2px solid #ccc;
+}
+
+.breadcrumb{
+    margin: 0rem;
+    background-color: #eee !important;
+}
+
+.navbar-toggler-icon {
+    background-color: #aaa;
+}
+
+.double-nav a {
+    color: #aaa;
+    font-size: 1.2rem;;
+}
+
+
+// Overwrite MDB style's
+
+p{
+    margin-bottom: 0rem !important;
+}
+
+@media only screen and (min-width: 990px) {
+    .completer-holder {
+        width: 30vw;
+    }
+}
+
+//toast top positon
+.toast-top-right {
+    top: 10%;
+}
+
+.btn-danger {
+    color: #fff !important;
+    background-color: #ec5252 !important;
+    border: 1px solid transparent !important;
+}
+
+.btn-danger:hover {
+    background-color: #992337 !important;
+}
+
+.toast-top-right {
+    top: 11%;
+    left: 10%;
+}
+
+#toast-container > mdb-toast-component {
+    width: 80vw;
+}
+
+.toast {
+    opacity: 1 !important;
+}
+
+
+//Video player sidebar playlist
+.sidenav .accordion .card{
+    border-radius: 0rem !important;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important; 
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
+    margin-bottom: 0.5rem;
+}
+
+.sidenav .accordion .card .card-header{
+    padding: 0.75rem 1.25rem;
+    color: #686f7a;
+}
+
+.sidenav .fa-angle-down{
+    // margin-top: -8px;
+    display: none;
+}
+
+.sidenav .accordion .card-body{
+    padding: 0rem;
+}
+
+.sidenav .accordion .card-body li{
+    border-top: 1px solid #f2f3f5;
+}
+
+
+
+//Curriculum For This Coursedetails
+.curriculum_style .accordion .card {
+    border: 1px solid #eee;
+    border-radius: 0;
+    margin-bottom: 0.2rem;
+}
+
+.curriculum_style .accordion .card .card-header {
+    background: #f9f9f9;
+    cursor: pointer;
+    padding: 10px 30px 10px 22px;
+    border-bottom: 1px solid #e8e9eb;
+    color: #505763;
+}
+
+.curriculum_style .accordion .card h5 {
+    font-size: 1rem;
+}
+
+.curriculum_style .accordion .card-body {
+    padding: 0;
+    color: #505763;
+    font-size: 14px;
+}
+
+.curriculum_style .accordion ul {
+    margin: 0;
+    
+}
+
+.curriculum_style .accordion li {
+    padding: 0.5rem;
+    border-bottom: 1px solid #e8e9eb;
+    padding-left: 2rem;
+}
+
+.curriculum_style .accordion .card .fa-angle-down {
+    float: left;
+    margin-top: -20px;
+}
+
+//Curriculum content
+.curriculum-content .accordion .card {
+    border: 1px solid #eee;
+    border-radius: 0;
+    margin-bottom: 0.2rem;
+}
+
+.curriculum-content .accordion .card .card-header {
+    background: #fff;
+    cursor: pointer;
+    // padding: 10px 30px 10px 22px;
+    border-bottom: 1px solid #e8e9eb;
+    color: #505763;
+}
+
+.curriculum-content .accordion .card h5 {
+    font-size: 1rem;
+}
+
+.curriculum-content .accordion .card-body {
+    padding: 0;
+    color: #505763;
+    font-size: 14px;
+}
+
+.curriculum-content .accordion ul {
+    padding-left: 0rem;
+    margin: 0;
+    list-style: none;
+    
+}
+
+.curriculum-content .accordion li {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e8e9eb;
+}
+
+.curriculum-content .accordion .card .fa-angle-down {
+    display: none
+}
+
+
+//Carousel
+.carousel-indicators{
+    display: none;
+}
+
+.carousel .carousel-control-prev-icon{
+    background-color: #000;
+    border-radius: 50%;
+}
+
+.carousel-control-prev {
+    left: -10%;
+}
+
+.carousel .carousel-control-next-icon{
+    background-color: #000;
+    border-radius: 50%;
+}
+
+.carousel-control-next {
+    right: -10%;
+}
+
+
+//Instructor accordion
+.how-it-works .accordion .card  {
+    padding: 0.2rem 1rem;
+    border-bottom: 0;
+}
+
+.how-it-works .accordion .card .card-header{
+    color: #505763;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+
+}
+
+.how-it-works .accordion .card .card-body {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.mandatory{
+    color: #ec5252;
+}
+
+.error-msg{
+    color: #ec5252;
+    font-size: 0.8rem;
+    position:  absolute;
+    top: 42px;
+    right: 0px;
+}
+
+//Jumbotron
+
+.jumbotron{
+    background-color: #505763;
+    color: #fff;
+    padding-bottom: 1.5rem;
+    margin: 0rem;
+}
+
+//Image upload css override
+// .img-ul-upload{
+//     color: #007791 !important;
+//     border: 1px solid #007791;
+//     text-transform: initial !important;
+//     margin-bottom: 0rem;
+// }
+
+// .img-ul-clear{
+//     display: none !important;
+// }
+
+// .img-ul-container{
+//     background-color: #ccc !important;
+//     width:200px;
+//     height: 200px;
+//     padding: 0 !important;
+// }
+
+// .img-ul-image{
+//     margin: 0rem !important;
+//     width:200px !important;
+//     height: 200px !important;
+// }
+
+table.table th, table.table td {
+    padding: 0.7rem;
+}
+
+//Course Management dashboard Navbar
+.manager #slide-out{
+    transform: translateX(0%) !important;
+    width: 220px; 
+}
+
+.manager .navbar{
+    background-color: #f3f3f4;
+    margin-left: 220px;
+    box-shadow: none;
+}
+
+// @media only screen and (max-width: 768px) {
+//     .manager #slide-out{
+//         transform: translateX(0%) !important;
+//         width: 50px; 
+//     }
+//     .manager .navbar{
+//         margin-left: 50px;
+//     }
+// }
+
+
+// Terms and Policy style overide
+.tab-content {
+    padding: 0rem;
+}
+
+/* Override Colors by using style rules */
+.rating.color-negative .star-container .star {
+  svg {
+    fill: #0f0;
+  }
+  i {
+    color: #0f0;
+  }
+}
+
+.rating.color-ok .star-container .star {
+  svg {
+    fill: #f00;
+  }
+  i {
+    color: #f00;
+  }
+}
+
+.rating.color-positive .star-container .star {
+  svg {
+    fill: #00f;
+  }
+  i {
+    color: #00f;
+  }
+}
+
+.rating.color-default .star-container .star {
+  svg {
+    fill: #ff0;
+  }
+  i {
+    color: #ff0;
+  }
+}
+

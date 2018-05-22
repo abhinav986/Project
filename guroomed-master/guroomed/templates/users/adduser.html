@@ -1,0 +1,140 @@
+{% extends "guroomed/base.html" %}
+
+{% block title %}Guroomed{% endblock %}
+
+{% load static %}
+
+
+{% block content %}
+<div class="row guroomed-courses">
+<div class="col-md-12">
+<div class="col-md-6">
+<h4 class="center"><strong><b>Add User</b></strong></h4>
+</div>
+</div>
+<div class="col-md-12">
+<div class="col-md-2">
+</div>
+<form method="post" action="/api/users/store" enctype="multipart/form-data">
+{% csrf_token %}
+
+<div class="col-md-4">
+   <div class="md-form">
+    <i class="fa fa-user prefix blue-text" aria-hidden="true"></i>
+    <input type="text" id="username" class="form-control" name="username" value={{request.POST.username}}>
+    <label for="username">Username</label>
+</div> 
+   <div class="md-form">
+    <i class="fa fa-envelope prefix red-text" aria-hidden="true"></i>
+    <input type="text" id="email" class="form-control" name="email" value={{request.POST.email}}>
+    <label for="email ">Email</label>
+</div> 
+   <div class="md-form">
+    <i class="fa fa-unlock-alt prefix purple-text" aria-hidden="true"></i>
+    <input type="password" id="password" class="form-control" name="password" value={{request.POST.password}}>
+    <label for="password">Password</label>
+</div> 
+   <div class="md-form">
+    <i class="fa fa-user prefix green-text" aria-hidden="true"></i>
+    <input type="text" id="first_name" class="form-control" name="first_name" value={{request.POST.first_name}}>
+    <label for="first_name">First Name</label>
+</div> 
+<div class="md-form">
+    <i class="fa fa-user prefix green-text" aria-hidden="true"></i>
+    <input type="text" id="last_name" class="form-control" name="last_name" value={{request.POST.last_name}}>
+    <label for="last_name">Last Name</label>
+</div>
+<div class="md-form">
+    <i class="fa fa-header prefix grey-text" aria-hidden="true"></i>
+    <input type="text" id="headline" class="form-control" name="headline" value={{request.POST.headline}}>
+    <label for="headline">Headline</label>
+</div> 
+<div class="md-form">
+    <i class="fa fa-btc prefix black-text" aria-hidden="true"></i>
+    <input type="text" id="biography" class="form-control" name="biography" value={{request.POST.biography}}>
+    <label for="biography">Biography</label>
+</div> 
+<div class="md-form">
+        <i class="fa fa-language prefix orange-text" aria-hidden="true"></i>
+        &nbsp;
+        <select class="mdb-select" name="language">
+            <option value="" disabled selected>Languages</option>
+            {% for language in languages %}
+                {% if request.POST.language == language.id|slugify %}
+                    <option selected value="{{language.id}}">{{language.name}}</option>
+                {% else %}
+                    <option value="{{language.id}}">{{language.name}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+</div> 
+
+<div class="md-form">
+    <i class="fa fa-link prefix black-text" aria-hidden="true"></i>
+    <input type="text" id="website_link" class="form-control" name="website_link" value={{request.POST.website_link}}>
+    <label for="website_link">Website_link</label>
+</div> 
+<div class="md-form">
+    <i class="fa fa-google-plus prefix red-text" aria-hidden="true"></i>
+    <input type="text" id="gplus_link" class="form-control" name="gplus_link" value={{request.POST.gplus_link}}>
+    <label for="gplus_link">Gplus_link</label>
+</div> 
+<div class="md-form">
+    <i class="fa fa-twitter prefix blue-text" aria-hidden="true"></i>
+    <input type="text" id="twitter_link" class="form-control" name="twitter_link" value={{request.POST.twitter_link}}>
+    <label for="twitter_link">Twitter_link</label>
+</div> 
+<div class="md-form">
+    <i class="fa fa-facebook prefix blue-text" aria-hidden="true"></i>
+    <input type="text" id="facebook_link" class="form-control" name="facebook_link" value={{request.POST.facebook_link}}>
+    <label for="facebook_link">Facebook_link</label>
+</div> 
+<div class="md-form">
+    <i class="fa fa-linkedin prefix blue-text" aria-hidden="true"></i>
+    <input type="text" id="linkedin_link" class="form-control" name="linkedin_link" value={{request.POST.linkedin_link}}>
+    <label for="linkedin_link">Linkedin_link</label>
+</div> 
+<div class="md-form">
+    <i class="fa fa-youtube prefix red-text" aria-hidden="true"></i>
+    <input type="text" id="youtube_link" class="form-control" name="youtube_link" value={{request.POST.youtube_link}}>
+    <label for="youtube_link">Youtube_link</label>
+</div> 
+<div class="md-form">
+    <i class="fa fa-file-image-o prefix black-text" aria-hidden="true"></i><br><br><input type="file" id="photo_link" class="file-path" name="photo_link" value={{request.POST.photo_link}}>
+    <label for="photo_link">Photo_link</label>
+</div> 
+<div class="md-form">
+<i class="fa fa-object-group prefix orange-text" aria-hidden="true"></i>
+&nbsp;
+    <select class="mdb-select" multiple>
+    <option value="" disabled selected>Select Group</option>
+         {% for group in groups %}
+             {% if group in selectedgroups %}
+                 <option id="groups" name="groups[]" value={{group.id}}>{{group.name}}</option>
+             {% else %}
+                 <option id="groups" name="groups[]" value={{group.id}}>{{group.name}}</option>
+             {% endif %}
+         {% endfor %}
+     </select>
+</div>
+<button type="submit" class="btn btn-warning">Submit</button>
+</div>
+</form>
+<div class="col-md-12">
+<div class="col-md-2"></div>
+<div class="col-md-2">
+    <p style="color:red;">
+        {% if error != '' %}
+            {{error}}
+        {% endif %}
+    </p>
+</div>
+</div>
+</div>
+</div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+        $('.mdb-select').material_select();
+        });
+    </script>
+{% endblock %}

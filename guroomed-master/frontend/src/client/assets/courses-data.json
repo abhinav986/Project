@@ -1,0 +1,32 @@
+{
+	"status":1,
+	"homepagedata":{
+		"infostrip":[
+			{"texts":["10000 online course","Explore variety of topics"]},
+			{"texts":["10000 online course1","Explore variety of topics1"]},
+			{"texts":["10000 online course2","Explore variety of topics2"]}
+		],
+		"courses":[
+			{"development":[
+							 {"course_id":1,"title":"Complete unity course","trainers":["Ben","Rick"],"stars":4.5,"modal_data":{"no_lectures":42,"hours":19,"level":"Beginner","description":"Game development & design made fun. Learn C# using the NEW Unity 2017. Your first 2D & 3D games for web & mobile","desc_points":[" Learn C#, a powerful modern language","Get experience using Unity 2017 - a versatile 3D tool","Gain an excellent general knowledge of video game design"]}},
+							 {"course_id":2,"title":"Complete unity course2","trainers":["Ben2","Rick2"],"stars":4.5,"modal_data":{"no_lectures":422,"hours":192,"level":"Beginner2","description":"2Game development & design made fun. Learn C# using the NEW Unity 2017. Your first 2D & 3D games for web & mobile","desc_points":[" Learn C#, a powerful modern language","Get experience using Unity 2017 - a versatile 3D tool","Gain an excellent general knowledge of video game design"]}},
+							 {"course_id":3,"title":"Complete unity course23","trainers":["Ben23","Rick23"],"stars":4.5,"modal_data":{"no_lectures":4223,"hours":1923,"level":"Beginner3","description":"3Game development & design made fun. Learn C# using the NEW Unity 2017. Your first 2D & 3D games for web & mobile","desc_points":[" Learn C#, a powerful modern language3","Get experience using Unity 2017 - a versatile 3D tool3","Gain an excellent general knowledge of video game design3"]}}
+							]
+			},
+			{"business":[
+							{"course_id":4,"title":"Complete unity course","trainers":["Ben","Rick"],"stars":4.5,"modal_data":{"no_lectures":42,"hours":19,"level":"Beginner","description":"Game development & design made fun. Learn C# using the NEW Unity 2017. Your first 2D & 3D games for web & mobile","desc_points":[" Learn C#, a powerful modern language","Get experience using Unity 2017 - a versatile 3D tool","Gain an excellent general knowledge of video game design"]}},
+							{"course_id":5,"title":"Complete unity course2","trainers":["Ben2","Rick2"],"stars":4.5,"modal_data":{"no_lectures":422,"hours":192,"level":"Beginner2","description":"2Game development & design made fun. Learn C# using the NEW Unity 2017. Your first 2D & 3D games for web & mobile","desc_points":[" Learn C#, a powerful modern language","Get experience using Unity 2017 - a versatile 3D tool","Gain an excellent general knowledge of video game design"]}},
+							{"course_id":6,"title":"Complete unity course23","trainers":["Ben23","Rick23"],"stars":4.5,"modal_data":{"no_lectures":4223,"hours":1923,"level":"Beginner3","description":"3Game development & design made fun. Learn C# using the NEW Unity 2017. Your first 2D & 3D games for web & mobile","desc_points":[" Learn C#, a powerful modern language3","Get experience using Unity 2017 - a versatile 3D tool3","Gain an excellent general knowledge of video game design3"]}}
+						]
+			},
+			{"design":[
+						 {"course_id":7,"title":"Complete unity course","trainers":["Ben","Rick"],"stars":4.5,"modal_data":{"no_lectures":42,"hours":19,"level":"Beginner","description":"Game development & design made fun. Learn C# using the NEW Unity 2017. Your first 2D & 3D games for web & mobile","desc_points":[" Learn C#, a powerful modern language","Get experience using Unity 2017 - a versatile 3D tool","Gain an excellent general knowledge of video game design"]}},
+						 {"course_id":8,"title":"Complete unity course2","trainers":["Ben2","Rick2"],"stars":4.5,"modal_data":{"no_lectures":422,"hours":192,"level":"Beginner2","description":"2Game development & design made fun. Learn C# using the NEW Unity 2017. Your first 2D & 3D games for web & mobile","desc_points":[" Learn C#, a powerful modern language","Get experience using Unity 2017 - a versatile 3D tool","Gain an excellent general knowledge of video game design"]}},
+						 {"course_id":9,"title":"Complete unity course23","trainers":["Ben23","Rick23"],"stars":4.5,"modal_data":{"no_lectures":4223,"hours":1923,"level":"Beginner3","description":"3Game development & design made fun. Learn C# using the NEW Unity 2017. Your first 2D & 3D games for web & mobile","desc_points":[" Learn C#, a powerful modern language3","Get experience using Unity 2017 - a versatile 3D tool3","Gain an excellent general knowledge of video game design3"]}}
+				]
+			}
+		],
+	  "be_instructor":{"title":"Become an Instructor!","description":"Teach what you love"},
+	  "for_business":{"title":"GUroomed for buiness","description":"Get unlimited access to courses"}
+	}
+}

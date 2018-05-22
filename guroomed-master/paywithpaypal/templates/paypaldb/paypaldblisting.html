@@ -1,0 +1,69 @@
+{% extends "guroomed/base.html" %}
+
+{% block title %}Guroomed{% endblock %}
+
+{% load static %}
+
+
+{% block content %}
+    <h2 class="center"><strong><b>Paypal Listing</b></strong></h2>
+<table class="table table-striped">
+    <thead class="thead-inverse">
+        <tr>
+            <th>ID</th>                    
+            <th>order_id</th> 
+            <th>payment_id</th> 
+            <th>state</th> 
+            <th>cart</th> 
+            <th>payer_payment_method</th> 
+            <th>payer_status</th> 
+            <th>payer_email</th> 
+            <th>payer_id</th> 
+            <th>payer_country_code</th> 
+            <th>transactions_amount</th> 
+            <th>transactions_currency</th> 
+            <th>payee_merchant_id</th> 
+            <th>payee_email</th> 
+            <th>description</th> 
+            <th>payment_mode</th> 
+            <th>reason_code</th> 
+            <th>protection_eligibility</th> 
+            <th>transaction_fee</th> 
+            <th>created_at</th> 
+            <th>updated_at</th> 
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for paypaldb in paypaldbs %}
+
+        <tr>
+            <td>{{paypaldb.id}}</td>                  
+            <td>{{paypaldb.order_id.id}}</td> 
+            <td>{{paypaldb.payment_id}}</td> 
+            <td>{{paypaldb.state}}</td> 
+            <td>{{paypaldb.cart}}</td> 
+            <td>{{paypaldb.payer_payment_method}}</td> 
+            <td>{{paypaldb.payer_status}}</td> 
+            <td>{{paypaldb.payer_email}}</td> 
+            <td>{{paypaldb.payer_id}}</td> 
+            <td>{{paypaldb.payer_country_code}}</td> 
+            <td>{{paypaldb.transactions_amount}}</td> 
+            <td>{{paypaldb.transactions_currency}}</td> 
+            <td>{{paypaldb.payee_merchant_id}}</td> 
+            <td>{{paypaldb.payee_email}}</td> 
+            <td>{{paypaldb.description}}</td> 
+            <td>{{paypaldb.payment_mode}}</td> 
+            <td>{{paypaldb.reason_code}}</td> 
+            <td>{{paypaldb.protection_eligibility}}</td> 
+            <td>{{paypaldb.transaction_fee}}</td> 
+            <td>{{paypaldb.created_at}}</td> 
+            <td>{{paypaldb.updated_at}}</td> 
+            <td>
+                 <a href="/api/paypal/paypaldb/delete/{{paypaldb.id}}" class="btn btn-danger btn-sm waves-effect waves-light"><i class="fa fa-trash" aria-hidden="true"></i> DELETE</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

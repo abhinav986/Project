@@ -1,0 +1,67 @@
+<div class="container">
+    <h4>{{searchStringMessage}}</h4>
+    <br />
+    <app-course-search (filterCheckBox)="filterCourse($event)" *ngIf="!noFilter"></app-course-search>
+    <br />
+    <div class="" *ngIf="noDataFound">
+        <h4>No Records Found</h4>
+    </div>
+</div>
+
+<app-loader *ngIf="loader.visible"></app-loader>
+<div class="container" *ngIf="!loader.visible">
+    <div class="row mt-2" *ngFor="let courseData of searchedCourseDataList">
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-3 p-0">
+            <div class="card">
+                <div class="view hm-white-slight waves-light" mdbRippleRadius>
+                    <img [src]="courseData[1]._source.image_url" alt="Image not found" class="img-fluid">
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9 col-xl-9">
+            <h5 class="card-title">{{courseData[1]._source.coursename}} - {{courseData[1]._source.subtitles}}</h5>
+            <a>{{courseData[1]._source.instructor}} : Instructor</a>
+            <p>For {{courseData[1]._source.difficulty_level}}</p>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 col-xl-9 p-0">
+                    <p class="card-text">{{courseData[1]._source.short_description}}
+                        <span>|</span> {{courseData[1]._source.features}}</p>
+                    <ul>
+                        <li>
+                            <i class="fa fa-play"></i> {{courseData[1]._source.no_of_lectures}} Lectures</li>
+                        <li>
+                            <i class="fa fa-clock-o"></i> {{courseData[1]._source.hours}} Hours</li>
+                        <li>
+                            <i class="fa fa-level-up"></i> {{courseData[1]._source.difficulty_level}} Level</li>
+                        <li>{{courseData[1]._source.languages}}</li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 text-right">
+                    <p>
+                        <span *ngIf="courseData[1]._source.offer">
+                            <i class="fa fa-inr"></i>
+                            <b> {{courseData[1]._source.offer}} </b>&nbsp;
+                        </span>
+                        <strike *ngIf="courseData[1]._source.offer">
+                            <i class="fa fa-inr"></i> {{courseData[1]._source.price}}
+                        </strike>
+                        <span *ngIf="!courseData[1]._source.offer">
+                            <i class="fa fa-inr"></i> {{courseData[1]._source.price}}
+                        </span>
+                    </p>
+                    <p>
+                        <i class="fa fa-star fa-lg yellow-text"></i>
+                        <i class="fa fa-star fa-lg yellow-text"></i>
+                        <i class="fa fa-star fa-lg yellow-text"></i>
+                        <i class="fa fa-star fa-lg yellow-text"></i>
+                        <i class="fa fa-star fa-lg yellow-text"></i>
+                        {{courseData[1]._source.rating_score}}
+                        <br> ({{courseData[1]._source.no_of_reviews}} ratings)
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

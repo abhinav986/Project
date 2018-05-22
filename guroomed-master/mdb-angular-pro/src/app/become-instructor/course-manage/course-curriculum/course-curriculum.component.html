@@ -1,0 +1,201 @@
+<div class="row">
+  <div class="col-md-6">
+    <h4 class="h4-responsive">Curriculum</h4>
+  </div>
+  <div class="col-md-6 text-right">
+    <button type="button" class="btn btn-sm btn-primary" (click)="addSection.show()" mdbRippleRadius>
+      <i class="fa fa-plus"></i>&nbsp;Add Section</button>
+    <button type="button" class="btn btn-sm btn-primary" mdbRippleRadius [routerLink]="['/instructor', 'course', 'draft-content', course_id, 'overview']">Preview</button>
+  </div>
+</div>
+<hr>
+<br>
+<p>Start putting together your course by creating sections, lectures and practice (quizzes and coding exercises) below.</p>
+<br>
+<div class="">
+  <form #form="ngForm">
+
+    <mdb-progress-bar class="progress primary-color-dark" mode="indeterminate" *ngIf="progress_bar"></mdb-progress-bar>
+
+    <div class="course_section" *ngFor="let newSecObj of newSectionAdded.reverse(); let i = index;">
+      <section id="section_{{i}}">
+        <div class="card p-4 section-editor">
+          <div class="row">
+            <div class="col-md-6">
+              <p>
+                <strong>Section {{newSecObj.order_num}}: </strong>{{newSecObj.title}}</p>
+            </div>
+            <!-- Lecture Lecture -->
+            <div class="col-md-3">
+              <a type="" class="" (click)="lecture.show()" mdbRippleRadius>
+                <i class="fa fa-plus"></i>&nbsp;Add Lecture</a>
+              <!-- Add Lecture From-->
+              <div mdbModal #lecture="mdb-modal" class="modal fade" id="modalSubscription" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog cascading-modal" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header light-blue darken-3 white-text">
+                      <h4 class="title">New Lecture</h4>
+                      <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="lecture.hide()">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <div class="modal-body mb-0">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="md-form">
+                            <input type="text" id="lecture_name_{{i}}" class="form-control" name="lecture_name" [(ngModel)]="addLecture.lecture_name"
+                              #lecture_name mdbActive>
+                            <label for="lecture_name_{{i}}">Lecture Name</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="md-form">
+                            <input type="text" id="description_{{i}}" class="form-control" name="description" [(ngModel)]="addLecture.description" #description
+                              mdbActive>
+                            <label for="description_{{i}}">Description</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="file-field">
+                            <div class="btn btn-primary btn-sm waves-light" mdbRippleRadius>
+                              <span>Upload Course video</span>
+                              <input type="file" accept="video/*" (change)="videoUpload($event.target.files)">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="text-center mt-1-half">
+                        <button class="btn btn-info mb-1 waves-light" (click)="saveLecture(newSecObj.id); lecture.hide()" mdbRippleRadius>Save</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Quiz Section -->
+            <div class="col-md-3">
+              <a type="" class="" (click)="quiz.show()" mdbRippleRadius>
+                <i class="fa fa-plus"></i>&nbsp;Add Quiz</a>
+              <div mdbModal #quiz="mdb-modal" class="modal fade" id="modalSubscription" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog cascading-modal" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header light-blue darken-3 white-text">
+                      <h4 class="title">New Quiz</h4>
+                      <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="quiz.hide()">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <div class="modal-body mb-0">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="md-form">
+                            <input type="text" id="quiz_title_{{i}}" class="form-control" name="quiz_title" [(ngModel)]="addQuiz.quiz_title" #quiz_title
+                              mdbActive>
+                            <label for="quiz_title_{{i}}">Quiz title</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="md-form">
+                            <input type="text" id="quiz_description_{{i}}" class="form-control" name="quiz_description" [(ngModel)]="addQuiz.quiz_description"
+                              #quiz_description mdbActive>
+                            <label for="description_{{i}}">Description</label>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="text-center mt-1-half">
+                        <button class="btn btn-info mb-1 waves-light" (click)="saveQuiz(newSecObj.id); quiz.hide()" mdbRippleRadius>Save</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <mdb-squeezebox [multiple]="false" aria-multiselectable="true" class="my-2">
+            <mdb-item *ngFor="let sl of newSecObj.curriculumLect; let a = index" class="my-4">
+              <!-- <div class="border-color"> -->
+              <mdb-item-head>Lecture {{sl.order_num}}: {{sl.title}}</mdb-item-head>
+              <mdb-item-body>
+                <span *ngIf="sl.description != 'undefined'">Description : {{sl.description}}</span>
+              </mdb-item-body>
+              <!-- </div> -->
+              
+            </mdb-item>
+            <mdb-item *ngFor="let q1 of newSecObj.curriculumQuiz; let b = index" class="my-4">
+              <!-- <div class="border-color"> -->
+              <mdb-item-head>Quiz {{ b + 1}}: {{q1.title}}
+                <span class="add-quiz">
+                  <a>Add Question</a>
+                </span>
+              </mdb-item-head>
+              <mdb-item-body>
+                <span *ngIf="q1.description != 'undefined'">Description : {{q1.description}}</span>
+                <br>
+                <div *ngFor="let qObj of q1.quizQuestion; let c = index">
+                  <span>Question {{ c + 1}} : {{qObj.content}}</span>
+                </div>
+                <br>
+                <app-quiz [quizId]="q1.id" [quizOrderNumber]="quizOrderNo"></app-quiz>
+              </mdb-item-body>
+              <!-- <mdb-item-head>Lecture {{sl.order_num}}: {{sl.title}} </mdb-item-head>
+              <mdb-item-body>
+                <span *ngIf="sl.description != 'undefined'">Description : {{sl.description}}</span>
+              </mdb-item-body> -->
+              <!-- </div> -->
+            </mdb-item>
+          </mdb-squeezebox>
+
+        </div>
+      </section>
+      <br>
+    </div>
+
+  </form>
+</div>
+
+<!-- Add section From-->
+<div mdbModal #addSection="mdb-modal" class="modal fade" id="modalSubscription" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog cascading-modal" role="document">
+    <div class="modal-content">
+      <div class="modal-header light-blue darken-3 white-text">
+        <h4 class="title">New Section</h4>
+        <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="addSection.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body mb-0">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="md-form">
+              <input type="text" id="section_name" class="form-control" name="section_name" [(ngModel)]="sectionAdded.section_name" #section_name
+                mdbActive>
+              <label for="section_name">Section Name</label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="md-form">
+              <input type="text" id="learning_objective" class="form-control" name="learning_objective" [(ngModel)]="sectionAdded.learning_objective"
+                #learning_objective mdbActive>
+              <label for="learning_objective">Learning Objective</label>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-1-half">
+          <button class="btn btn-info mb-1 waves-light" (click)="sectionAdd(); addSection.hide()" mdbRippleRadius>Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

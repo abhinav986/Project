@@ -1,0 +1,32 @@
+{% extends "guroomed/base.html" %}
+
+{% block title %}Guroomed{% endblock %}
+
+{% load static %}
+
+
+{% block content %}
+<form method="post" action="/api/usercourses/store">
+{% csrf_token %}
+<div class="col-md-3">
+   <div class="md-form">
+
+    <i class="fa fa-book prefix blue-text" aria-hidden="true"></i>
+    <input type="text" id="course_id" class="form-control" name="course_id" required="required" placeholder="course_id">
+    <input type="text" id="user_id" class="form-control" name="user_id" required="required" placeholder="user_id">
+    <input type="text" id="taught_learned" class="form-control" name="taught_learned" required="required" placeholder="taught_learned">
+    <input type="text" id="is_favourite" class="form-control" name="is_favourite" required="required" placeholder="is_favourite">
+    <input type="text" id="in_progress" class="form-control" name="in_progress" placeholder="in_progress">
+</div>
+
+</div>
+<button type="submit" class="btn btn-warning">Submit</button>
+</form>
+<div class="col-md-2">
+    <p style="color:red;">
+        {% if error != '' %}
+            {{error}}
+        {% endif %}
+    </p>
+</div>
+{% endblock %}

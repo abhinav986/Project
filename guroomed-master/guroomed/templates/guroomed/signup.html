@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+  {% load static %}
+<html lang="en-us" >
+<head>
+<title>Sign Up | ZenRays admin</title>
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/base.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/login.css' %}" />
+<style type="text/css">
+h4 {
+    font-size: 14px;
+    margin: 10px 0;
+    padding: 10px;
+    background: #f8f8f8;
+    border: 2px solid red;
+    color: red;
+}
+.login #container.error-box {
+    margin: 100px auto -100px;
+    background: transparent;
+    border: 0;
+}
+.login input[type=text], .login input[type=email], .login input[type=password]{
+  width: 98%;
+  padding: 4px 1%;
+}
+
+.button:active, input[type=submit]:active, input[type=button]:active, .button:focus, input[type=submit]:focus, input[type=button]:focus, .button:hover, input[type=submit]:hover, input[type=button]:hover {
+  background: #609ab6;
+}
+
+
+span.helptext {
+    display: none;
+}
+</style>
+</head>
+
+<body class="login" data-admin-utc-offset="0">
+
+{% if message %}
+<div id="container" class="error-box">
+    <h4>{{message}}</h4>
+</div>
+{% endif %}
+<!-- Container -->
+  <!-- Header -->
+<div id="container">
+  <div id="header">
+    <div id="branding">
+      <h1 id="site-name"><a href="/signup/">ZenPlatform Sign Up</a></h1>
+    </div>
+  </div>
+<!-- END Header -->
+<!-- Content -->
+<div id="content" class="colM">
+    <div id="content-main">
+    <h2>Sign up</h2>
+    <form method="post">
+      {% csrf_token %}
+      {% for field in form %}
+        <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        
+        {% for error in field.errors %}
+        <p style="color: red">{{ error }}</p>
+        {% endfor %}
+        </p>
+      {% endfor %}
+      <input type="submit" value="Sign up">
+    </form>
+    <br class="clear" />
+
+</div>
+    <br class="clear" />
+</div>
+    <!-- END Content -->
+    <div id="footer"></div>
+</div>
+<!-- END Container -->
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+{% extends "guroomed/base.html" %}
+
+{% block title %}Guroomed{% endblock %}
+
+{% load static %}
+
+
+{% block content %}
+<div class="col-md-3"></div>
+<div class="col-md-6 guroomed-courses">
+    <h2 class="center"><strong><b>Reject Reasons</b></strong></h2>
+    <a href="{% url 'create'%}"><span class="btn btn-warning pull-right waves-effect waves-light"> <i class="fa fa-plus" aria-hidden="true"></i>  ADD NEW</span></a>
+<table class="table table-striped">
+    <thead class="thead-inverse">
+        <tr>
+            <th>ID</th>                    
+            <th>Text</th>
+            <th>Type</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for r in rr %}
+
+        <tr>
+            <td>{{r.id}}</td>
+            <td>{{r.text}}</td>
+            <td>{{r.type}}</td>
+            <td>
+                 <a href="edit{{r.id}}" class="btn btn-success btn-sm waves-effect waves-light"><i class="fa fa-pencil" aria-hidden="true"></i> EDIT</a>
+                 <a href="delete{{r.id}}" class="btn btn-danger btn-sm waves-effect waves-light"><i class="fa fa-trash" aria-hidden="true"></i> DELETE</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

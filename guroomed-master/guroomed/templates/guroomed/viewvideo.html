@@ -1,0 +1,26 @@
+<!doctype HTML>
+<html>
+	<head>
+	</head>
+	<body>
+		{% load embed_video_tags %}
+		{% load permission_tags %}
+		{% if user|has_role:'faculty,zen_student,superadmin' %}
+			{% if output %}
+				{% for item in output %}
+				<div>
+					{{ item.title }}<br>
+					{% video item.video as my_video %}
+						{% video my_video "small" is_secure=True %}
+					{% endvideo %}
+				</div>
+				{% endfor %}
+			{% else %}
+				could not load
+			{% endif %}
+			
+		{% else %}
+		  	You don't have access to view this page. Please <a href="/admin/login">login</a>
+		{% endif %}
+	</body>
+</html>

@@ -1,0 +1,111 @@
+<div class="row">
+    <div class="col-md-12">
+        <ul style="margin: 0rem;">
+            <!-- <li>
+                    <div class="btn-group" dropdown>
+                        <button dropdownToggle type="button" class="btn btn-outline-primary dropdown-toggle waves-light" mdbRippleRadius>
+                            Level
+                        </button>
+                        <div class="dropdown-menu dropdown-primary">
+                            <div class="dropdown-item">
+                                <input mdbDeepDirective type="checkbox" id="all_level" name="all_level" #all_level value="High" (change)="checkBoxFunc(all_level)">
+                                <label for="all_level">All Levels</label>
+                            </div>
+                            <div class="dropdown-item">
+                                <input mdbDeepDirective type="checkbox" id="beginner" name="beginner" #beginner value="beginner" (change)="checkBoxFunc(beginner)">
+                                <label for="beginner">Beginner</label>
+                            </div>
+                            <div class="dropdown-item">
+                                <input mdbDeepDirective type="checkbox" id="Intermidate" name="Intermidate" #Intermidate value="Intermidate" (change)="checkBoxFunc(Intermidate)">
+                                <label for="Intermidate">Intermidate</label>
+                            </div>
+                            <div class="dropdown-item">
+                                <input mdbDeepDirective type="checkbox" id="expert" name="expert" #expert value="expert" (change)="checkBoxFunc(expert)">
+                                <label for="expert">Expert</label>
+                            </div>
+                        </div>
+                    </div>
+                </li> -->
+            <li>
+                <div class="btn-group" dropdown>
+                    <button dropdownToggle type="button" class="btn btn-outline-primary dropdown-toggle waves-light" mdbRippleRadius>
+                        Language
+                    </button>
+                    <div class="dropdown-menu dropdown-primary">
+                        <div class="dropdown-item">
+                            <input mdbDeepDirective type="checkbox" id="english" name="english" #english value="english" (change)="checkBoxFunc(english)">
+                            <label for="english">English</label>
+                        </div>
+                        <div class="dropdown-item">
+                            <input mdbDeepDirective type="checkbox" id="hindi" name="hindi" #hindi value="hindi" (change)="checkBoxFunc(hindi)">
+                            <label for="hindi">Hindi</label>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <!-- <li>
+                    <div class="btn-group" dropdown>
+                        <button dropdownToggle type="button" class="btn btn-outline-primary dropdown-toggle waves-light" mdbRippleRadius>
+                            Features
+                        </button>
+
+                        <div class="dropdown-menu dropdown-primary">
+                            <div class="dropdown-item">
+                                <input mdbDeepDirective type="checkbox" id="captions" name="captions" #captions value="captions" (change)="checkBoxFunc(captions)">
+                                <label for="captions">Captions</label>
+                            </div>
+                            <div class="dropdown-item">
+                                <input mdbDeepDirective type="checkbox" id="quzzies" name="quzzies" #quzzies value="quzzies" (change)="checkBoxFunc(quzzies)">
+                                <label for="quzzies">Quzzies</label>
+                            </div>
+                            <div class="dropdown-item">
+                                <input mdbDeepDirective type="checkbox" id="coding_exercises" name="coding_exercise" #coding_exercise value="coding_exercises"
+                                    (change)="checkBoxFunc(coding_exercises)">
+                                <label for="coding_exercises">Coding Exercises</label>
+                            </div>
+                        </div>
+                    </div>
+                </li> -->
+            <!-- <li>
+                    <div class="btn-group" dropdown>
+                        <button dropdownToggle type="button" class="btn btn-outline-primary dropdown-toggle waves-light" mdbRippleRadius>
+                            Price
+                        </button>
+
+                        <div class="dropdown-menu dropdown-primary">
+                            <div class="dropdown-item">
+                                <input mdbDeepDirective type="checkbox" id="paid" name="paid" #paid value="paid" (change)="checkBoxFunc(paid)">
+                                <label for="paid">Paid</label>
+                            </div>
+                            <div class="dropdown-item">
+                                <input mdbDeepDirective type="checkbox" id="free" name="free" #free value="free" (change)="checkBoxFunc(free)">
+                                <label for="free">Free</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </li> -->
+        </ul>
+
+        <ul class="float_right m-0">
+            <li>
+                <div class="btn-group" dropdown>
+                    <span class="mr-1 mt-1">Sort By:</span>
+                    
+                    <button dropdownToggle type="button" class="btn btn-outline-primary dropdown-toggle waves-light" mdbRippleRadius>
+                       {{selectedValue ? selectedValue : 'Default'}}
+                    </button>
+
+                    <div class="dropdown-menu dropdown-primary">
+                        <a class="dropdown-item" #default name="default" id="default" value="default" (click)="checkBoxFunc($event)" *ngIf="selectedValue != 'Default'">Default</a>
+                        <!-- <a class="dropdown-item" #mostReviewed (click)="checkBoxFunc(mostReviewed)">Most Reviewed</a>
+                        <a class="dropdown-item" #highestrated (click)="checkBoxFunc(highestrated)">Highest Rated</a>
+                        <a class="dropdown-item" #newestRated (click)="checkBoxFunc(newestRated)">Newest</a> -->
+                        <a class="dropdown-item" #lowToHigh name="asc" id="asc" value="asc" (click)="checkBoxFunc($event)" *ngIf="selectedValue != 'Price: Low to High'">Price: Low to High</a>
+                        <a class="dropdown-item" #highToLow name="desc" id="desc" value="desc" (click)="checkBoxFunc($event)" *ngIf="selectedValue != 'Price: High to Low'">Price: High to Low</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

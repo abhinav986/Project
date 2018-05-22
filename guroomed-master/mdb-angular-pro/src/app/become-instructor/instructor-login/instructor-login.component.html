@@ -1,0 +1,10 @@
+<section>
+  <div class="container py-4">
+    <div class="alert alert-success" role="alert" *ngIf="successMsg">
+      <h4 class="alert-heading h4-responsive">{{successMsg}}...!</h4>
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="errorMsg">
+      <h4 class="alert-heading h4-responsive">{{errorMsg}}...!</h4>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,52 @@
+<form (submit)="onLoginSubmit()" #form="ngForm">
+  <!-- <div class="row text-center">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <button type="button" class="btn btn-fb waves-light" mdbRippleRadius>
+        <i class="fa fa-facebook left"></i>Countinue with your Facebook</button>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-12">
+      <button type="button" class="btn btn-gplus waves-light" mdbRippleRadius>
+        <i class="fa fa-google left"></i>Countinue with your Google</button>
+    </div>
+  </div>
+  <hr> -->
+  <div class="row">
+    <div class="col-md-12 text-center error_message">
+      {{loginMessage}}
+    </div>
+  </div>
+  <div class="row" style="margin-top: 1rem;">
+    <div class="col-md-12">
+      <div class="md-form">
+        <i class="fa fa-envelope prefix"></i>
+        <input mdbActive type="text" id="username" name="username" class="form-control" [(ngModel)]="credentials.username" #username="ngModel"
+          required>
+        <label for="username">Email Id</label>
+        <span *ngIf="username.touched && !username.valid" class="error-msg">Email required</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="md-form">
+        <i class="fa fa-lock prefix"></i>
+        <input mdbActive type="password" id="password" name="password" class="form-control" [(ngModel)]="credentials.password" #password="ngModel"
+          required autocomplete="">
+        <label for="password">Password</label>
+        <span *ngIf="password.touched && !password.valid" class="error-msg">Password required</span>
+      </div>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-12">
+      <button type="submit" class="btn btn-lg btn-login" data-dismiss="modal" mdbRippleRadius [disabled]="form.invalid">Login &nbsp;<i class="fa fa-spinner fa-spin" *ngIf="loading"></i></button>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-12">
+      <p id="TandC">By signing in you agree to our <a [routerLink]="['terms-and-policy']" (click)="autoShownModal.hide()">Terms of Use & Privacy Policy</a></p>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,44 @@
+{% extends "guroomed/base.html" %}
+
+{% block title %}Guroomed{% endblock %}
+
+{% load static %}
+
+
+{% block content %}
+<div class="col-md-3"></div>
+<div class="col-md-6 guroomed-courses">
+    <h2 class="center"><strong><b>Category Listing</b></strong></h2>
+    <a href="/api/usercourses/create"><span class="btn btn-warning pull-right waves-effect waves-light"><i class="fa fa-plus" aria-hidden="true"></i> ADD NEW</span></a>
+<table class="table table-striped">
+    <thead class="thead-inverse">
+
+        <tr>
+            <th>ID</th>                      
+            <th>Course</th> 
+            <th>User</th> 
+            <th>taught_learned</th>
+            <th>is_favourite</th>
+            <th>in_progress</th>
+            <th>action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for uc in ucs %}
+        <tr>
+            <td>{{uc.id}}</td>                      
+            <td>{{uc.course_id.title}}</td>                      
+            <td>{{uc.user_id.first_name}} {{uc.user_id.last_name}} </td>                      
+            <td>{{uc.taught_learned}}</td>                      
+            <td>{{uc.is_favourite}}</td>                      
+            <td>{{uc.in_progress}}</td> 
+            <td>
+                 <a href="/api/usercourses/edit/{{uc.id}}" class="btn btn-success btn-sm waves-effect waves-light"><i class="fa fa-pencil" aria-hidden="true"></i> EDIT</a>
+                 <a href="/api/usercourses/delete/{{uc.id}}" class="btn btn-danger btn-sm waves-effect waves-light"><i class="fa fa-trash" aria-hidden="true"></i> DELETE</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

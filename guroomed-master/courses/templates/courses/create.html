@@ -1,0 +1,212 @@
+{% extends "guroomed/base.html" %}
+
+{% block title %}Guroomed{% endblock %}
+
+{% load static %}
+
+
+{% block content %}
+<div class="col-md-12  guroomed-courses">
+<div class="col-md-2">
+</div>
+<div class="col-md-6">
+    <h4>Courses : Elastic Search</h4>
+<form action="/api/courses/store" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+<div class="md-form">
+<i class="fa fa-book prefix red-text" aria-hidden="true"></i>
+        &nbsp;
+        <select class="mdb-select" name="course_subcategory_id">
+            <option value="" disabled selected>Subcategory</option>
+            {% for sub_cat in sub_cats %}
+                <option value="{{sub_cat.id}}">{{sub_cat.name}}</option>
+            {% endfor %}
+        </select>
+</div>
+
+<div class="md-form">
+    <i class="fa fa-leanpub prefix orange-text" aria-hidden="true"></i>
+    <input type="text" id="whatilearn" class="form-control" name="what_will_i_learn">
+    <label for="whatilearn">What_will_i_learn</label>
+</div>
+
+<div class="md-form">
+    <i class="fa fa-arrow-circle-o-right prefix blue-text" aria-hidden="true"></i>
+    <input type="text" id="req" class="form-control" name="requirements">
+    <label for="req">Requirements</label>
+</div>
+
+<div class="md-form">
+    <i class="fa fa-audio-description prefix green-text" aria-hidden="true"></i>
+    <input type="text" id="desc" class="form-control" name="description">
+    <label for="desc">Description</label>
+</div>
+
+<div class="md-form">
+    <i class="fa fa-inr prefix black-text" aria-hidden="true"></i>
+    <input type="text" id="price" class="form-control" name="price">
+    <label for="price">Price</label>
+</div>
+
+<div class="md-form">
+    <i class="fa fa-user prefix red-text" aria-hidden="true"></i>
+    &nbsp;
+        <select class="mdb-select" name="user_id[]" multiple>
+            <option value="" disabled selected>Instructor</option>
+            {% for user in users %}
+            {% if user.first_name == '' %}
+                <option value="{{user.id}}">{{user.user_id.email}}</option>
+            {% else %}
+                <option value="{{user.id}}">{{user.user_id.first_name}}  {{user.user_id.last_name}}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
+</div>
+
+<div class="md-form">
+    <i class="fa fa-sort-amount-desc prefix yellow-text" aria-hidden="true"></i>
+    <input type="text" id="disc" class="form-control" name="discount">
+    <label for="disc">Discount</label>
+</div>
+
+<div class="md-form">
+    <i class="fa fa-star prefix orange-text" aria-hidden="true"></i>
+    <input type="text" id="rating" class="form-control" name="ratings">
+    <label for="rating">Rating</label>
+</div>
+
+<div class="md-form">
+    <i class="fa fa-star-half-o prefix orange-text" aria-hidden="true"></i>
+    <input type="text" id="ratingc" class="form-control" name="rating_count">
+    <label for="ratingc">Rating_count</label>
+</div>
+
+<div class="md-form">
+    <i class="fa fa-users prefix black-text" aria-hidden="true"></i>
+    <input type="text" id="stuen" class="form-control" name="students_enrolled">
+    <label for="stuen">Students enrolled</label>
+</div>
+
+<div class="md-form">
+        <i class="fa fa-language prefix red-text" aria-hidden="true"></i>
+        &nbsp;&nbsp;&nbsp;
+        <select class="mdb-select" name="course_language_id">
+            <option value="" disabled selected>Language</option>
+            {% for language in languages %}
+                <option value="{{language.id}}">{{language.name}}</option>
+            {% endfor %}
+        </select>
+</div>
+
+<div class="md-form">
+    <i class="fa fa-tag prefix blue-text" aria-hidden="true"></i>
+    <input type="text" id="title" class="form-control" name="title">
+    <label for="title">Title</label>
+</div>
+
+<div class="md-form">
+    <i class="fa fa-tag prefix green-text" aria-hidden="true"></i>
+    <input type="text" id="subtitle" class="form-control" name="subtitle">
+    <label for="subtitle">Subtitles</label>
+</div>
+
+<!-- New fields --> 
+
+<div class="md-form">
+    <i class="fa fa-file-video-o prefix red-text" aria-hidden="true"></i>
+    <input type="text" id="preview_video_url" class="form-control" name="preview_video_url">
+    <label for="preview_video_url">Video URL</label>
+</div>
+
+<div class="md-form">
+    <i class="fa fa-file-image-o prefix yellow-text" aria-hidden="true"></i><br /><br />
+    <input type="file" id="preview_image_url" class="file-path" name="preview_image_url">
+    <label for="preview_image_url">Image</label>
+</div> 
+
+<div class="md-form">
+    <i class="fa fa-graduation-cap prefix black-text" aria-hidden="true"></i>
+    <input type="number" id="no_lectures" class="form-control" name="no_lectures">
+    <label for="no_lectures">Lectures</label>
+</div>
+
+<div class="md-form">
+    <i class="fa fa-hourglass prefix blue-text" aria-hidden="true"></i>
+    <input type="number" id="no_hours" class="form-control" name="no_hours">
+    <label for="no_hours">Hours</label>
+</div>
+
+<div class="md-form">
+    <i class="fa fa-level-up prefix orange-text" aria-hidden="true"></i>
+    &nbsp;&nbsp;&nbsp;
+    <select class="mdb-select" name="level">
+        <option value="" disabled selected>Level</option>
+        <option value="b">Beginner</option>        
+        <option value="i">Intermediate</option>
+        <option value="e">Expert</option>
+        <option value="a">All</option>
+   </select>
+</div>
+
+<div class="md-form">
+<i class="fa fa-tags prefix green-text" aria-hidden="true"></i>
+    &nbsp;
+        <select class="mdb-select" name="tags[]" multiple>
+            <option value="" disabled selected>Tags</option>
+            {% for tag in tags %}
+                <option value="{{tag.id}}">{{tag.name}}</option>
+            {% endfor %}
+        </select>
+</div>
+
+<div class="md-form">
+<i class="fa fa-tags prefix green-text" aria-hidden="true"></i>
+    &nbsp;
+        <select class="mdb-select" name="features[]" multiple>
+            <option value="" disabled selected>Select Features</option>
+            <option value="Quizzes">Quizzes</option>
+            <option value="Captions">Captions</option>
+            <option value="Coding Excercises">Coding Excercises</option>
+            <option value="Full lifetime access">Full lifetime access</option>
+            <option value="Access on Mobile and TV">Access on Mobile and TV</option>
+        </select>
+</div>
+
+<div class="md-form">
+    <i class="fa fa-tags prefix red-text" aria-hidden="true"></i>
+    &nbsp;&nbsp;&nbsp;
+    <select class="mdb-select" name="label">
+        <option value="" disabled selected>Label</option>
+        <option value="Bestseller">Bestseller</option>        
+        <option value="New">New</option>
+   </select>
+</div>
+
+<div class="md-form">
+    <i class="fa fa-text-width prefix green-text" aria-hidden="true"></i>
+    <input type="text" id="slug" class="form-control" name="slug">
+    <label for="slug">Slug</label>
+</div>
+
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+<div class="col-md-12">
+<div class="col-md-2"></div>
+<div class="col-md-2">
+    <p style="color:red;">
+        {% if error != '' %}
+            {{error}}
+        {% endif %}
+    </p>
+</div>
+</div>
+<!-- Start your project here -->
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.mdb-select').material_select();
+    });
+</script>
+</div>
+{% endblock %}

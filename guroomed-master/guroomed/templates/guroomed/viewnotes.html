@@ -1,0 +1,322 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+<link href="{% static 'notes/mdb/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'notes/mdb/css/mdb.min.css' %}" rel="stylesheet">
+
+<link href="{% static 'notes/mdb/css/style.css' %}" rel="stylesheet">
+ <!-- SCRIPTS -->
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="{% static 'notes/extras/jquery.min.1.7.js' %}"></script>
+    <script type="text/javascript" src="{% static 'notes/extras/modernizr.2.5.3.min.js' %}"></script>
+
+
+   <script type="text/javascript">
+     function loadApp() {
+      // Create the flipbook
+      $('#flipbook').turn({
+          // width:600,
+          // height:300,
+          elevation: 50,
+          gradients: true,
+          autoCenter: true
+      });
+     }
+     // Load the HTML4 version if there's not CSS transform
+     yepnope({
+      test : Modernizr.csstransforms,
+      yep: ['{% static 'notes/lib/turn.js' %}'],
+      nope: ['{% static 'notes/lib/turn.html4.min.js' %}'],
+      both: ['{% static 'notes/css/basic.css' %}'],
+      complete: loadApp
+     });
+   </script>
+   <style type="text/css">
+   .navbar {
+    padding: 0;
+   }
+    body{
+        overflow:hidden;
+        }
+
+    #flipbook  #notes_image, #notes_text{
+      margin: 10px 30px;
+    }
+div#notes_image img {
+    max-height: 100%;    height: auto;
+    display: inline-flex;
+}
+#notes_image {
+    height: 95%;
+}
+    #flipbook .page-wrapper{
+        -webkit-perspective:2000px;
+        -moz-perspective:2000px;
+        -ms-perspective:2000px;
+        -o-perspective:2000px;
+        perspective:2000px;
+    }
+
+    #flipbook .hard{
+        background:#c2cad0 !important;
+        color:#414141;
+        border:2px solid #96858F;
+        -webkit-box-shadow:inset 0 0 5px #666;
+        -moz-box-shadow:inset 0 0 5px #666;
+        -o-box-shadow:inset 0 0 5px #666;
+        -ms-box-shadow:inset 0 0 5px #666;
+        box-shadow:inset 0 0 5px #666;
+        font-weight:bold;
+    }
+
+    #flipbook .odd{
+        background:-webkit-gradient(linear, right top, left top, color-stop(0.95, #FFF), color-stop(1, #DADADA));
+        background-image:-webkit-linear-gradient(right, #FFF 95%, #C4C4C4 100%);
+        background-image:-moz-linear-gradient(right, #FFF 95%, #C4C4C4 100%);
+        background-image:-ms-linear-gradient(right, #FFF 95%, #C4C4C4 100%);
+        background-image:-o-linear-gradient(right, #FFF 95%, #C4C4C4 100%);
+        background-image:linear-gradient(right, #FFF 95%, #C4C4C4 100%);
+        -webkit-box-shadow:inset 0 0 5px #666;
+        -moz-box-shadow:inset 0 0 5px #666;
+        -o-box-shadow:inset 0 0 5px #666;
+        -ms-box-shadow:inset 0 0 5px #666;
+        box-shadow:inset 0 0 5px #666;
+        
+    }
+
+    #flipbook .even{
+      background:-webkit-gradient(linear, left top, right top, color-stop(0.95, #fff), color-stop(1, #dadada));
+      background-image:-webkit-linear-gradient(left, #fff 95%, #dadada 100%);
+      background-image:-moz-linear-gradient(left, #fff 95%, #dadada 100%);
+      background-image:-ms-linear-gradient(left, #fff 95%, #dadada 100%);
+      background-image:-o-linear-gradient(left, #fff 95%, #dadada 100%);
+    }
+/* Smartphones (portrait and landscape)*/
+@media screen and (min-width: 320px) and (max-width: 480px){
+    #flipbook{
+        width:10rem;
+        height:10rem;
+}
+}
+/* Smartphones (portrait) */
+@media screen and (max-width: 320px){
+    #flipbook{
+        width:13rem;
+        height:10rem;
+
+}
+}
+/* Smartphones (landscape) */
+@media screen and (min-width: 321px){
+    #flipbook{
+        width:30rem;
+        height: 20rem;
+}
+}
+/* Tablets, iPads (portrait and landscape)*/
+@media screen and (min-width: 768px) and (max-width: 1024px){
+    #flipbook{
+        width:30rem;
+        height: 20rem;
+}
+}
+/* Tablets, iPads (portrait)*/
+@media screen and (min-width: 768px){
+    #flipbook{
+        width:40rem;
+        height: 20rem;
+}
+}
+/* Tablets, iPads (landscape)*/
+@media screen and (min-width: 1024px){
+    #flipbook{
+        width:50rem;
+        height: 20rem;
+}
+}
+/* Desktops and laptops*/
+@media screen and (min-width: 1224px){
+    #flipbook{
+        width:75rem;
+        height: 39rem;
+}
+}
+/* Large screens */
+@media screen and (min-width: 1824px){
+    #flipbook{
+        width:80rem;
+        height: 35rem;
+}
+}
+   </style>
+</head>
+<body>
+<!--Navbar-->
+
+<!--Navbar-->
+<nav class="navbar navbar-fixed-top navbar-dark unique-color">
+<button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapseEx">
+            <i class="fa fa-bars" style="margin-bottom:5em;margin-top:-0.2em"></i></button>
+    <div class="container">
+         <div class="col-xs-12">
+     <div class="collapse navbar-toggleable-md" id="collapseEx">
+       
+        <a class="navbar-brand" href="http://zenrays.com/" target="_blank">ZenRays</a>
+     
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"></a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/notes">Notes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/videos/view">Videos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"></a>
+                </li>
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                {% endif %}
+            </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<!--/.Navbar-->
+
+
+{% load permission_tags %}
+{% if user|has_role:'faculty,zen_student,superadmin' %}
+
+
+  <div class="flipbook-viewport">
+    <div class="container">
+      <div id="flipbook">
+        <div class="hard"> <h3 style="text-align:center;margin-top:35%;">ZenRays Notes</h3>
+        </div> 
+        <div class="hard"></div>
+          {% if output %}
+            {% for note in output %}
+              <div>
+                <div id="notes_image"><img style="max-width:100%;" src="/media/{{ note.note_file }}"></div>
+              </div>
+            {% endfor %}
+          {% else %}
+           <p>No notes are available.</p>
+          {% endif %}
+        <div class="hard"></div>
+        <div class="hard"></div>
+      </div>
+    </div>
+  </div>
+
+{% else %}
+  You don't have access to view this page. Please <a href="/admin/login">login</a>
+{% endif %}
+<div class="col-md-3 col-xs-6">
+</div>
+
+
+<!--Footer-->
+<footer class="page-footer center-on-small-only">
+
+    <!--Footer Links-->
+    <div class="container-fluid">
+        <div class="row">
+
+            <!--First column-->
+            <div class="col-md-3 offset-md-1">
+                <h5 class="title">ZenRays Technologies</h5>
+                <p>Powered by IITians & Industry Experts</p>
+            </div>
+            <!--/.First column-->
+
+            <hr class="hidden-md-up">
+
+            <!--Second column-->
+            <div class="col-md-2 offset-md-1">
+                <h5 class="title">Quick Links</h5>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/notes">Notes</a></li>
+                    <li><a href="/videos/view">Videos</a></li>
+                </ul>
+            </div>
+            <!--/.Second column-->
+
+            <hr class="hidden-md-up">
+
+            <!--Third column-->
+            <div class="col-md-2">
+                <h5 class="title">Links</h5>
+                <ul>
+                    <li><a href="http://zenrays.com/angularjs-training">AngularJS</a></li>
+                    <li><a href="http://zenrays.com/java-j2ee-training">Complete Java</a></li>
+                    <li><a href="http://zenrays.com/testing-courses">Software Testing </a></li>
+                    <li><a href="http://zenrays.com/web-development-course">Modern Web Development</a></li>
+                </ul>
+            </div>
+            <!--/.Third column-->
+
+            <hr class="hidden-md-up">
+
+            <!--Fourth column-->
+            <div class="col-md-2">
+                <h5 class="title">Links</h5>
+                <ul>
+                    <li><a href="http://zenrays.com/course/pythondjango-training">Python & django</a></li>
+                    <li><a href="http://zenrays.com/ui-development-training-courses-bangalore">UI Development</a></li>
+                    <li><a href="http://zenrays.com/oops-javascript-training">JavaScript</a></li>
+                    <li><a href="http://zenrays.com/php-training">PHP & Laravel</a></li>
+                </ul>
+            </div>
+            <!--/.Fourth column-->
+
+        </div>
+    </div>
+    <!--/.Footer Links-->
+
+    <hr>
+
+    
+
+    
+    <!--Copyright-->
+    <div class="footer-copyright">
+        <div class="container-fluid">
+            © 201 Copyright: <a href="https://www.MDBootstrap.com"> MDBootstrap.com </a>
+
+        </div>
+    </div>
+    <!--/.Copyright-->
+
+</footer>
+<!--/.Footer-->
+
+    <script type="text/javascript" src="{% static 'notes/mdb/js/jquery-3.1.1.min.js' %}"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{% static 'notes/mdb/js/tether.min.js' %}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{% static 'notes/mdb/js/bootstrap.min.js' %}"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{% static 'notes/mdb/js/mdb.min.js' %}"></script>
+</body>
+</html>

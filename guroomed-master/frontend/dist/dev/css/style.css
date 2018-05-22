@@ -1,0 +1,110 @@
+/* CUSTOM STYLES */
+.home-searchbar{
+	background-color:#e0e0e0;
+	border-radius:10px;
+}
+.signmodal-title{
+	text-align:center;
+}
+.sinupmodal-btnsign{
+	background-color:#ef5350;
+	width:100%;
+}
+.modal-privacy{
+	font-size:9px;
+	text-align:center;
+}
+.modal-fbcolor{
+	width:100%;
+	background-color:#3F729B;
+}
+.modal-googlecolor{
+	width:100%;
+	background-color:#ef5350;
+}
+.padding{
+	padding-top:70px;
+}
+.home-strip{
+	background:linear-gradient(-45deg,#6e1a52,#6e1a52);
+	padding-top:10px;
+	padding-bottom:5px;
+	text-align:center;
+}
+.home-strip1{
+	background:linear-gradient(-45deg,#ec5252,#6e1a52);
+	padding-top:10px;
+	padding-bottom:5px;
+	text-align:center;
+}
+.home-strip2{
+background:linear-gradient(-45deg,#ec5252,#ec5252);
+padding-top:10px;
+padding-bottom:5px;
+text-align:center;
+}
+.strip-text{
+color:white;
+}
+.home-bgcolor{
+	background-color:#f5f5f5;
+}
+.top-padding{
+	margin-left:110px;
+	padding-top:20px;
+}
+.card-padding{
+	padding:5px;
+}
+.authorname{
+	font-size:12px;
+}
+.course-modal{
+	width:350px;
+}
+.top-rated{
+	background-color:#3F729B;
+	height:80px;
+	text-align:center;
+	line-height:80px;
+	color:white;
+	margin:1px;
+	width:370px;
+	border-radius:5px;
+}
+.trending{
+	background-color:#ab47bc;
+	height:80px;
+	text-align:center;
+	line-height:80px;
+	color:white;
+	margin:1px;
+	width:370px;
+	border-radius:5px;
+}
+.news-noteworthy{
+	background-color:#26a69a;
+	height:80px;
+	text-align:center;
+	line-height:80px;
+	color:white;
+	margin:1px;
+	width:370px;
+	border-radius:5px;
+}
+.instructor-business{
+	padding-top:20px;
+}
+.become-instructor{
+	text-align:center;
+	border-right: 1px solid #dedfe0;
+}
+.teaching-business{
+	background-color:#ef5350;
+}
+.guroomed-business{
+	text-align: center;
+}
+.footer-headertitle{
+	color:#3F729B;
+}

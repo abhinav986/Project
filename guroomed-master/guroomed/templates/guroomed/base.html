@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% load static %}
+    <title>{% block title %}Guroomed{% endblock %}</title>
+    
+    <!-- SCRIPTS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+    <link href="{% static 'guroomed/mdb/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'guroomed/mdb/css/mdb.min.css' %}" rel="stylesheet">
+    <link href="{% static 'guroomed/mdb/css/style.css' %}" rel="stylesheet">
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="{% static 'guroomed/extras/jquery.min.1.7.js' %}"></script>
+    <script type="text/javascript" src="{% static 'guroomed/extras/modernizr.2.5.3.min.js' %}"></script>
+{% block head_extend %}Guroomed{% endblock %}
+</head>
+
+<body>
+    <nav class="navbar navbar-fixed-top navbar-dark unique-color">
+        <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapseEx">
+            <i class="fa fa-bars" style="margin-bottom:5em;margin-top:-0.2em"></i>
+        </button>
+
+        <div class="container">
+        <div class="col-xs-12">
+        <div class="collapse navbar-toggleable-md" id="collapseEx">   
+            <a class="navbar-brand" href="/api">Guroomed</a>
+
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/api">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"></a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Videos</a>
+                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/api/videos/fupload/">Upload Videos</a>
+                        <a class="dropdown-item" href="/api/videos/view/">Videos</a>
+                        <a class="dropdown-item" href="/api/videos/autodesk/360">Autodesk 360</a>
+                        <a class="dropdown-item" href="/api/videos/autodesk/forge">Audodesk Forge</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Courses</a>
+                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/api/courses">Courses</a>
+                        <a class="dropdown-item" href="/api/courses/cat">Categories</a>
+                        <a class="dropdown-item" href="/api/courses/subcat">Subcategories</a>
+                        <a class="dropdown-item" href="/api/courses/lang">Languages</a>
+                        <a class="dropdown-item" href="/api/courses/search">Elastic Search</a>
+                        <a class="dropdown-item" href="/api/courses/search/form">Elastic Search Filters</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Users</a>
+                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/api/users">Users</a>
+                        <a class="dropdown-item" href="/api/courses/instruct">Instructors</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"></a>
+                </li>
+
+                {% if request.user.is_authenticated %}
+                    {% if request.user.is_superuser %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/api/admin">Admin</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"></a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/api/changepd">Change Password</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"></a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/api/logout">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/api/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/api/signup">Signup</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+        </div> 
+        </div>
+    </nav>
+    <!--/.Navbar-->
+    <div class="container" style="margin-top:7%;">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!--Footer-->
+    <footer class="page-footer center-on-small-only">
+
+    <!--Footer Links-->
+    <div class="container-fluid">
+    <div class="row">
+
+        <!--First column-->
+        <div class="col-md-3 offset-md-1">
+            <h5 class="title">Guroomed</h5>
+        </div>
+        <!--/.First column-->
+
+        <hr class="hidden-md-up">
+
+        <!--Second column-->
+        <div class="col-md-2 offset-md-1">
+            <h5 class="title">Quick Links</h5>
+            <ul>
+                <li><a href="/api/">Home</a></li>
+                <li><a href="#">Notes</a></li>
+                <li><a href="/api/videos/view">Videos</a></li>
+            </ul>
+        </div>
+        <!--/.Second column-->
+
+        <hr class="hidden-md-up">
+
+        <!--Third column-->
+
+    </div>
+    </div>
+    <!--/.Footer Links-->
+
+    <hr>
+
+    <!--Copyright-->
+    <div class="footer-copyright">
+    <div class="container-fluid">
+    © 2017 Copyright: guroomed </a>
+
+    </div>
+    </div>
+    <!--/.Copyright-->
+
+    </footer>
+    <!--/.Footer-->
+
+    <script type="text/javascript" src="{% static 'guroomed/mdb/js/jquery-3.1.1.min.js' %}"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{% static 'guroomed/mdb/js/tether.min.js' %}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{% static 'guroomed/mdb/js/bootstrap.min.js' %}"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{% static 'guroomed/mdb/js/mdb.min.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+{% extends "guroomed/base.html" %}
+
+{% block title %}Guroomed{% endblock %}
+
+{% load static %}
+
+
+{% block content %}
+    <h2 class="center"><strong><b>Paypal Info for - Order : {{paypaldb.order_id.id}}</b></strong></h2>
+<table class="table table-striped">
+    <thead class="thead">
+        <tr>
+            <th>ID</th>                    
+            <td>{{paypaldb.id}}</td>                  
+        </tr>
+        <tr>
+            <th>order_id</th> 
+            <td>{{paypaldb.order_id.id}}</td> 
+        </tr>
+        <tr>
+            <th>payment_id</th> 
+            <td>{{paypaldb.payment_id}}</td> 
+        </tr>
+        <tr>
+            <th>state</th> 
+            <td>{{paypaldb.state}}</td> 
+        </tr>
+        <tr>
+            <th>cart</th> 
+            <td>{{paypaldb.cart}}</td> 
+        </tr>
+        <tr>
+            <th>payer_payment_method</th> 
+            <td>{{paypaldb.payer_payment_method}}</td> 
+        </tr>
+        <tr>
+            <th>payer_status</th> 
+            <td>{{paypaldb.payer_status}}</td> 
+        </tr>
+        <tr>
+            <th>payer_email</th> 
+            <td>{{paypaldb.payee_email}}</td> 
+        </tr>
+        <tr>
+            <th>payer_id</th> 
+            <td>{{paypaldb.payer_id}}</td> 
+        </tr>
+        <tr>
+            <th>payer_country_code</th> 
+            <td>{{paypaldb.payer_country_code}}</td> 
+        </tr>
+        <tr>
+            <th>transactions_amount</th> 
+            <td>{{paypaldb.transactions_amount}}</td> 
+        </tr>
+        <tr>
+            <th>transactions_currency</th> 
+            <td>{{paypaldb.transactions_currency}}</td> 
+        </tr>
+        <tr>
+            <th>payee_merchant_id</th> 
+            <td>{{paypaldb.payee_merchant_id}}</td> 
+        </tr>
+        <tr>
+            <th>payee_email</th> 
+            <td>{{paypaldb.payer_email}}</td> 
+        </tr>
+        <tr>
+            <th>description</th> 
+            <td>{{paypaldb.description}}</td> 
+        </tr>
+        <tr>
+            <th>payment_mode</th> 
+            <td>{{paypaldb.payment_mode}}</td> 
+        </tr>
+        <tr>
+            <th>reason_code</th> 
+            <td>{{paypaldb.reason_code}}</td> 
+        </tr>
+        <tr>
+            <th>protection_eligibility</th> 
+            <td>{{paypaldb.protection_eligibility}}</td> 
+        </tr>
+        <tr>
+            <th>transaction_fee</th> 
+            <td>{{paypaldb.transaction_fee}}</td> 
+        </tr>
+        <tr>
+            <th>created_at</th> 
+            <td>{{paypaldb.created_at}}</td> 
+        </tr>
+        <tr>
+            <th>updated_at</th> 
+            <td>{{paypaldb.updated_at}}</td> 
+        </tr>
+        <tr>
+            <th>Action</th>
+            <td><a href="/api/paypal/paypaldb/delete/{{paypaldb.id}}" class="btn btn-danger btn-sm waves-effect waves-light"><i class="fa fa-trash" aria-hidden="true"></i> DELETE</a></td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for paypaldb in paypaldbs %}
+            <td>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

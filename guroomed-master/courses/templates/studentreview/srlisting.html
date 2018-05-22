@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Courses</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../static/courses/mdb/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Material Design Bootstrap -->
+    <link href="../../static/courses/mdb/css/mdb.min.css" rel="stylesheet">
+
+    <!-- Your custom styles (optional) -->
+    <link href="../../static/courses/mdb/css/style.css" rel="stylesheet">
+    <style type="text/css">
+        .center{
+            text-align: center;
+            padding-top:15px;
+            color: #3F729B;
+        }
+        .guroomed-courses{
+           padding-top:70px; 
+        }
+    </style>
+   </head>
+
+<body>
+<nav class="navbar navbar-fixed-top navbar-dark unique-color">
+<button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapseEx">
+            <i class="fa fa-bars" style="margin-bottom:5em;margin-top:-0.2em"></i></button>
+    <div class="container">
+         <div class="col-xs-12">
+     <div class="collapse navbar-toggleable-md" id="collapseEx">   
+      <a class="navbar-brand" href="/">Guroomed</a>
+
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"></a>
+                </li>
+
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Videos</a>
+                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/videos/fupload">Upload Videos</a>
+                    <a class="dropdown-item" href="/videos/view">Videos</a>
+                </div>
+            </li>
+                <li class="nav-item">
+                    <a class="nav-link"></a>
+                </li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Courses</a>
+                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/courses">Courses</a>
+                    <a class="dropdown-item" href="/courses/cat">Categories</a>
+                    <a class="dropdown-item" href="/courses/subcat">Subcategories</a>
+                    <a class="dropdown-item" href="/courses/lang">Languages</a>
+                    <a class="dropdown-item" href="/courses/instruct">Instructor</a>
+                    <a class="dropdown-item" href="/courses/search">Elastic Search</a>
+                    <a class="dropdown-item" href="/courses/search/form">Elastic Search Filters</a>
+                </div>
+            </li>
+                <li class="nav-item">
+                    <a class="nav-link"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users">Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"></a>
+                </li>
+                {% if request.user.is_authenticated %}
+                    {% if request.user.is_superuser %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin">Admin</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout"></a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/changepd">Change Password</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout"></a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signup">Signup</a>
+                    </li>
+                {% endif %}
+            </ul>
+            </div>
+       </div> 
+    </div>
+</nav>
+<div class="col-md-3"></div>
+<div class="col-md-6 guroomed-courses">
+    <h2 class="center"><strong><b>Category Listing</b></strong></h2>
+    <a href="/courses/studentreview/create"><span class="btn btn-warning pull-right waves-effect waves-light"><i class="fa fa-plus" aria-hidden="true"></i> ADD NEW</span></a>
+<table class="table table-striped">
+    <thead class="thead-inverse">
+
+        <tr>
+            <th>ID</th>                      
+            <th>Course</th> 
+            <th>User</th> 
+            <th>no_of_stars</th>
+            <th>about_the_course</th>
+            <th>about_the_instructor</th>
+            <th>how_course_can_improved</th>
+            <th>review</th>
+            <th>action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sr in srs %}
+        <tr>
+            <td>{{sr.id}}</td>                      
+            <td>{{sr.course_id.title}}</td>                      
+            <td>{{sr.user_id.first_name}} {{sr.user_id.last_name}} </td>                      
+            <td>{{sr.no_of_stars}}</td>                      
+            <td>{{sr.about_the_course}}</td>                      
+            <td>{{sr.about_the_instructor}}</td> 
+            <td>{{sr.how_course_can_improved}}</td> 
+            <td>{{sr.review}}</td> 
+            <td>
+                 <a href="/courses/studentreview/edit/{{sr.id}}" class="btn btn-success btn-sm waves-effect waves-light"><i class="fa fa-pencil" aria-hidden="true"></i> EDIT</a>
+                 <a href="/courses/studentreview/delete/{{sr.id}}" class="btn btn-danger btn-sm waves-effect waves-light"><i class="fa fa-trash" aria-hidden="true"></i> DELETE</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+                    
+    <script type="text/javascript" src="../../static/courses/mdb/js/jquery-3.1.1.min.js"></script>
+
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="../../static/courses/mdb/js/tether.min.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="../../static/courses/mdb/js/bootstrap.min.js"></script>
+
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="../../static/courses/mdb/js/mdb.min.js"></script>
+
+
+</body>
+
+</html>

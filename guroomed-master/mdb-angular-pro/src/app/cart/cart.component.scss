@@ -1,0 +1,59 @@
+.jumbotron{
+    background-color: #505763;
+    color: #fff;
+    padding-bottom: 1.5rem;
+    margin: 0rem;
+}
+
+.breadcrumb{
+    background-color: transparent;
+}
+
+.fa-shopping-cart{
+    color: #eee;
+    font-size: 10rem;
+}
+
+.bg-color {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
+
+.custom_font{
+    font-size: 14px;
+}
+
+ul{
+    list-style: none;
+    padding-left: 0;
+    border: 1px solid #ccc;
+}
+
+.card{
+    border-radius: 0rem;
+}
+
+.remove{
+    color: #007791;
+    font-size: 12px;
+}
+
+.img-fluid{
+    height: 100px;
+}
+
+@media (max-width: 767px) {
+    .img-fluid{
+        height: 100px;
+    }
+    .br-display{
+        display: none;
+    }
+    .text-right {
+        margin-top: -3rem;
+    }
+}
+
+.btn-checkout {
+    width: 100%;
+}

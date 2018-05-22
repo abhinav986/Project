@@ -1,0 +1,74 @@
+<button type="button" class="btn btn-primary waves-light" data-toggle="modal" data-target="#basicExample" (click)="demoBasic.show()"
+  mdbWavesEffect>
+  Add Multiple Choice Question
+</button>
+
+<div mdbModal #demoBasic="mdb-modal" class="modal fade" id="basicExample" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true" style="overflow-y: scroll;">
+  <div class="modal-dialog modal-lg" role="document">
+    <form (submit)="sumitQuiz(_quizId)" #ngForm="ngForm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title w-100" id="myModalLabel">Quiz</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="demoBasic.hide()">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body py-4">
+          <p>Question</p>
+          <br>
+          <div class="md-form">
+            <input mdbActive type="text" name="question" [(ngModel)]="quizData.question" [id]="question+id" class="form-control">
+            <label [for]="question+id" class="">Question</label>
+          </div>
+          <br>
+          <p>Answer</p>
+          <br>
+          <div id="quiz-answer-options">
+            <div class="row">
+              <div class="col-xs-10 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                <div class="form-check">
+                  <input class="form-check-input" name="correctAnswer" [(ngModel)]="correctAnswer1" type="radio" [id]="id+1" [value]="1">
+                  <label [for]="id+1"></label>
+                </div>
+
+                <div class="md-form quiz-form">
+                  <input type="text" [id]="id+21" name="option1" class="form-control" [(ngModel)]="quizData.option1" placeholder="Option 1">
+                </div>
+
+                <div class="form-check">
+                  <input class="form-check-input" name="correctAnswer" [(ngModel)]="correctAnswer2" type="radio" [id]="id+2" value="2">
+                  <label [for]="id+2"></label>
+                </div>
+                <div class="md-form quiz-form">
+                  <input type="text" [id]="id+22" name="option2" class="form-control" [(ngModel)]="quizData.option2" placeholder="Option 2">
+                </div>
+
+                <div class="form-check">
+                  <input class="form-check-input" name="correctAnswer" [(ngModel)]="correctAnswer3" type="radio" [id]="id+3" value="3">
+                  <label [for]="id+3"></label>
+                </div>
+                <div class="md-form quiz-form">
+                  <input type="text" [id]="id+23" name="option3" class="form-control" [(ngModel)]="quizData.option3" placeholder="Option 3">
+                </div>
+
+                <div class="form-check">
+                  <input class="form-check-input" name="correctAnswer" [(ngModel)]="correctAnswer4" type="radio" [id]="id+4" value="4">
+                  <label [for]="id+4"></label>
+                </div>
+                <div class="md-form quiz-form">
+                  <input type="text" [id]="id+24" name="option4" class="form-control" [(ngModel)]="quizData.option4" placeholder="Option 4">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm waves-light" data-dismiss="modal" (click)="demoBasic.hide()" mdbWavesEffect>Close</button>
+          <button type="submit" class="btn btn-primary btn-sm waves-light" mdbWavesEffect (click)="demoBasic.hide()">Save changes</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

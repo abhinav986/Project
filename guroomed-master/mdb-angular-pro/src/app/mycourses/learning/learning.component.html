@@ -1,0 +1,71 @@
+<nav class="breadcrumb">
+    <div class="container">
+        <a class="breadcrumb-item" (click)="goToHome()">
+            <i class="fa fa-home"></i>
+        </a>
+        <a class="breadcrumb-item" active>My Courses</a>
+    </div>
+</nav>
+
+<div class="jumbotron">
+    <div class="container">
+        <h2>My Courses</h2>
+        <ul>
+            <li>
+                <a>All Courses </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="bg-color">
+    <div class="container">
+        <div class="row" *ngIf="isCourseData">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" *ngFor="let myCourse of myCourseData">
+                <div class="card">
+                    <a>
+                        <div class="view hm-white-slight waves-light" mdbRippleRadius>
+                            <img src="http://127.0.0.1:8000{{myCourse.preview_image_url}}" class="img-fluid" alt="Course Image" *ngIf="image_url" >
+                            <img src="http://www.guroomed.com{{myCourse.preview_image_url}}" class="img-fluid" alt="Course Image" *ngIf="!image_url" (click)="onLecturesClick(myCourse.id)">
+                            <a class="play_button" (click)="onLecturesClick(myCourse.id)">
+                                <div class="mask flex-center">
+                                    <i class="fa fa-play-circle fa-3x"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <h6 class="card-title" style="height: 40px;"  (click)="courseDetails(myCourse.id)">{{myCourse.title.length > 30 ? (myCourse.title | slice:0:30)+ '.....': myCourse.title}}</h6>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" [style.width]="myCourse.progress">
+                            </div>
+                        </div>
+                        <span class="progress_percentge card-text">{{myCourse.progress}} Complete </span>
+                        <div class="user_rating">
+                            <i class="fa fa-star-o fa-lg yellow-text" aria-hidden="true"></i>
+                            <i class="fa fa-star-o fa-lg yellow-text" aria-hidden="true"></i>
+                            <i class="fa fa-star-o fa-lg yellow-text" aria-hidden="true"></i>
+                            <i class="fa fa-star-o fa-lg yellow-text" aria-hidden="true"></i>
+                            <i class="fa fa-star-o fa-lg yellow-text" aria-hidden="true"></i>
+                        </div>
+                        <span class="user_rating leave_rating">
+                            Leave a rating
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="!isCourseData" style="padding: 10vh 1vh;">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+                <h4>Start learning today.</h4>
+                <p>When you enroll in a course, it will appear here.
+                    <a [routerLink]="['']">
+                        <b>Browse now.</b>
+                    </a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>

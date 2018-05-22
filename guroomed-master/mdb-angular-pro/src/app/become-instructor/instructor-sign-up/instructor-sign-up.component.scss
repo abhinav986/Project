@@ -1,0 +1,19 @@
+.card-header{
+    background-color: #f2f3f5;
+}
+
+.error_message{
+    color: #ec5252;
+}
+
+.prefix {
+    padding-top: 0;
+}
+
+#login_link{
+    color: #007791;
+}
+
+input[type=checkbox].filled-in:checked + label:after {
+    top: 0 !important;
+}

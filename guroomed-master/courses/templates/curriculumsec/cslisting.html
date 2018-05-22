@@ -1,0 +1,41 @@
+{% extends "guroomed/base.html" %}
+
+{% block title %}Guroomed{% endblock %}
+
+{% load static %}
+
+
+{% block content %}
+    <h2 class="center"><strong><b>Curriculum Section Listing</b></strong></h2>
+    <a href="/api/courses/curriculumsec/create"><span class="btn btn-warning pull-right waves-effect waves-light"><i class="fa fa-plus" aria-hidden="true"></i> ADD NEW</span></a>
+<table class="table table-striped">
+    <thead class="thead-inverse">
+
+        <tr>
+            <th>ID</th>                      
+            <th>Course</th> 
+            <th>title</th>
+            <th>order_num</th>
+            <th>no_lectures</th>
+            <th>duration</th>
+            <th>action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cs in css %}
+        <tr>
+            <td>{{cs.id}}</td>                      
+            <td>{{cs.course_id.title}}</td> 
+            <td>{{cs.title}}</td> 
+            <td>{{cs.order_num}}</td> 
+            <td>{{cs.no_lectures}}</td> 
+            <td>{{cs.duration}}</td> 
+            <td>
+                 <a href="/api/courses/curriculumsec/edit/{{cs.id}}" class="btn btn-success btn-sm waves-effect waves-light"><i class="fa fa-pencil" aria-hidden="true"></i> EDIT</a>
+                 <a href="/api/courses/curriculumsec/delete/{{cs.id}}" class="btn btn-danger btn-sm waves-effect waves-light"><i class="fa fa-trash" aria-hidden="true"></i> DELETE</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

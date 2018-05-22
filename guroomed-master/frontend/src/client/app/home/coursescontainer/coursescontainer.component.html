@@ -1,0 +1,23 @@
+<div class="row home-bgcolor">
+<div class="col-md-10 top-padding">
+    <h5>Top Courses in </h5>
+    <div class="col-md-3" *ngFor  = "let course of courses"  >
+      <app-course [data] ="course"></app-course>
+    </div>
+</div>
+</div>
+
+<div class="row home-bgcolor">
+    <div class="col-md-10 top-padding">
+        <h5>Discover Our Popular Courses</h5>
+        <div class="col-md-3 top-rated">
+            <b>Top Rated</b>
+        </div>
+        <div class="col-md-3 trending">
+            <b>Trending</b>
+        </div>
+        <div class="col-md-3 news-noteworthy">
+            <b>News & Noteworthy</b>
+        </div>
+    </div>
+</div>
